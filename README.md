@@ -1,15 +1,15 @@
 # Introduction
 
-brief introduction about the library
+Common react components for application development
 
 # Installation
 
-`paste the install command here`
+`yarn add telluria-ui`
 
 # Usage
 
-`language of use`
+`typescript`
 
-```js
-paste the code example here
+```ts
+import User from 'telluria-ui';
 ```
