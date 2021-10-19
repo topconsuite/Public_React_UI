@@ -1,8 +1,8 @@
 {
-  "name": "library-name",
-  "version": "1.0.0",
-  "description": "Base project for npm react components library",
-  "main": "dist/index.js",
+  "name": "@npm-telluria-tecnologia/telluria-ui",
+  "version": "1.0.3",
+  "description": "common react components for application development",
+  "main": "dist",
   "scripts": {
     "test": "react-scripts test --watchAll=false --coverage",
     "build": "yarn test && rollup -c",
@@ -60,7 +60,7 @@
       "yarn lint-check"
     ]
   },
-  "jest":{
+  "jest": {
     "coverageThreshold": {
       "global": {
         "branches": 90,
