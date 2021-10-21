@@ -1,5 +1,5 @@
 {
-  "name": "library-name",
+  "name": "telluria-ui",
   "version": "1.0.0",
   "description": "Base project for npm react components library",
   "main": "dist/index.js",
@@ -12,8 +12,8 @@
     "lint-check": "eslint src --ext js,ts,tsx",
     "lint-fix": "eslint src --fix --ext js,ts,tsx",
     "prepare": "husky install",
-    "linkpackage": "yarn link && npm link ../react-app-test-npm-library/node_modules/react/",
-    "unlinkpackage": "yarn unlink && npm unlink ../react-app-test-npm-library/node_modules/react/"
+    "link-package": "yarn link && npm link ../../Rastrin/Frontend/node_modules/react/",
+    "unlink-package": "yarn unlink && npm unlink ../../Rastrin/Frontend/react-app-test-npm-library/node_modules/react/"
   },
   "keywords": [],
   "author": "",
@@ -21,8 +21,10 @@
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
+    "@types/jquery": "^3.5.8",
     "@types/react": "^17.0.29",
     "@types/react-dom": "^17.0.9",
+    "@types/react-html-parser": "^2.0.2",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "commitizen": "^4.2.4",
@@ -43,11 +45,17 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.4.1",
     "@types/styled-components": "^5.1.15",
+    "jquery": "^3.6.0",
     "react": "^17.0.2",
+    "react-html-parser": "^2.0.2",
+    "react-icons": "^4.3.1",
     "react-scripts": "^4.0.3",
-    "styled-components": "^5.3.1"
+    "react-spring": "^8.0.27",
+    "styled-components": "^5.3.1",
+    "uuidv4": "^6.2.12"
   },
   "config": {
     "commitizen": {
@@ -60,7 +68,7 @@
       "yarn lint-check"
     ]
   },
-  "jest":{
+  "jest": {
     "coverageThreshold": {
       "global": {
         "branches": 90,
