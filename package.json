@@ -1,11 +1,11 @@
 {
   "name": "@npm-telluria-tecnologia/telluria-ui",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "common react components for application development",
-  "main": "dist",
+  "main": "dist/index.js",
   "scripts": {
     "test": "react-scripts test --watchAll=false --coverage",
-    "build": "yarn test && rollup -c",
+    "build": "rollup -c",
     "start": "rollup -c -w",
     "commit": "git-cz",
     "pubnpm": "yarn build && yarn publish --no-git-tag-version",
