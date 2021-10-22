@@ -1,5 +1,5 @@
 import React, {
-  createContext, useContext, useCallback, useState
+  createContext, useContext, useCallback, useState, useMemo
 } from "react";
 import { useTransition } from "react-spring";
 
@@ -23,7 +23,7 @@ interface ToastContextData {
   removeToast(id: string): void;
 }
 
-const ToastContext = createContext<ToastContextData>({} as ToastContextData);
+const ToastContext = createContext({} as ToastContextData);
 const ToastProvider: React.FC = ({ children }) => {
 
   const [messages, setMessages] = useState<ToastMessage[]>([]);
@@ -76,8 +76,16 @@ const ToastProvider: React.FC = ({ children }) => {
     setMessages((state) => state.filter((message) => message.id !== id));
   }, []);
 
+  const contextValue = useMemo<ToastContextData>(
+    () => ({
+      addToast,
+      removeToast
+    }),
+    [addToast, removeToast]
+  );
+
   return (
-    <ToastContext.Provider value={{ addToast, removeToast }}>
+    <ToastContext.Provider value={contextValue}>
       {children}
       <ToastContainer>
         {messagesWithTransitions.map(({ item, key, props }) => (
@@ -92,7 +100,7 @@ function useToast(): ToastContextData {
 
   const context = useContext(ToastContext);
 
-  if (!context) throw new Error("useToast must be used within a ToastProvider");
+  if (!context?.addToast) throw new Error("useToast must be used within a ToastProvider");
 
   return context;
 }
