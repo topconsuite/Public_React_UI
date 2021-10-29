@@ -1,7 +1,6 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
     "jest": true
   },
   "extends": [
@@ -16,13 +15,14 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2021,
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/ban-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "no-use-before-define": "off",
