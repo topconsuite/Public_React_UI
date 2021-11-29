@@ -1,6 +1,6 @@
 {
   "name": "@npm-telluria-tecnologia/telluria-ui",
-  "version": "1.1.20",
+  "version": "1.1.21",
   "description": "common react components for application development",
   "main": "dist/index.js",
   "types": "dist",
@@ -70,7 +70,6 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "yarn lint-fix",
-      "git add",
       "yarn lint-check"
     ]
   },
