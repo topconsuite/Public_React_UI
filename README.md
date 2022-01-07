@@ -11,5 +11,5 @@ Common react components for application development
 `typescript`
 
 ```ts
-import User from 'telluria-ui';
+
 ```
