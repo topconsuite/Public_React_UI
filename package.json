@@ -69,6 +69,7 @@
     "react-icons": "^3.11.0",
     "react-scripts": "3.4.4",
     "react-spring": "^8.0.27",
+    "react-svg": "^14.1.11",
     "styled-components": "^5.2.0",
     "uuidv4": "^6.2.5"
   },
