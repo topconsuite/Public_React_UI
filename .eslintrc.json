@@ -6,7 +6,7 @@
   "extends": [
     "airbnb",
     "eslint:recommended",
-    "plugin:react/recommended", 
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -22,6 +22,7 @@
   "rules": {
     "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/ban-types": "off",
     "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
@@ -45,8 +46,12 @@
     "padding-line-between-statements": [
       "error",
       { "blankLine": "always", "prev": "*", "next": "return" },
-      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
-      { "blankLine": "any",    "prev": ["const", "let", "var"], "next": ["const", "let", "var"]}
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      }
     ]
   },
   "settings": {
