@@ -1,7 +1,7 @@
 {
   "name": "@npm-telluria-tecnologia/telluria-ui",
   "description": "Common react components for application development",
-  "version": "1.4.21",
+  "version": "1.5.21",
   "main": "dist/index.js",
   "types": "dist",
   "license": "MIT",
@@ -64,6 +64,7 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@unform/core": "^2.1.6",
     "@unform/web": "^2.1.6",
+    "jotai": "^1.6.0",
     "jquery": "^3.5.1",
     "react-html-parser": "^2.0.2",
     "react-icons": "^3.11.0",
