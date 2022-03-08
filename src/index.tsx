@@ -1,21 +1,16 @@
 import TelluriaProvider from "./hooks";
 import { useToast } from "./hooks/useToast/useToast";
 
-import TextField from "./atoms/TextField";
-import SidebarMenu, { SidebarMenuProps } from "./atoms/SidebarMenu";
-import SidebarDrawerMenu, { SidebarDrawerMenuProps } from "./atoms/SidebarDrawerMenu";
+export { TelluriaProvider, useToast };
 
-import Sidebar from "./molecules/Sidebar";
-import SidebarDrawer from "./molecules/SidebarDrawer";
+export { Sidebar, SpeedDial, SidebarDrawer } from "./molecules";
 
 export {
-  TelluriaProvider,
-  useToast,
   TextField,
-  Sidebar,
-  SidebarDrawer,
+  FloatActionButton,
+  SpeedDialMenu,
   SidebarMenu,
   SidebarMenuProps,
-  SidebarDrawerMenu,
-  SidebarDrawerMenuProps
-};
+  SidebarDrawerMenuProps,
+  SidebarDrawerMenu
+} from "./atoms";

@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
-import { SidebarMenuContainer, SidebarMenuTitle, SidebarMenuIdentifier } from "./styles";
+import Tooltip from "../Tooltip";
+
+import { SidebarMenuContainer, SidebarMenuIdentifier } from "./styles";
 
 export interface SidebarMenuProps {
   id: string;
@@ -28,15 +30,15 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
   }, []);
 
   return (
-    <SidebarMenuContainer
-      tabIndex={-1}
-      id={id}
-    >
-      <img src={icon} alt="menu Icon" />
-      <SidebarMenuTitle>{title}</SidebarMenuTitle>
-      <SidebarMenuIdentifier identifierColor={identifierColor} />
-    </SidebarMenuContainer>
-
+    <Tooltip title={title} position="right">
+      <SidebarMenuContainer
+        tabIndex={-1}
+        id={id}
+      >
+        <img src={icon} alt="menu Icon" />
+        <SidebarMenuIdentifier identifierColor={identifierColor} />
+      </SidebarMenuContainer>
+    </Tooltip>
   );
 };
 

@@ -22,14 +22,15 @@ const SidebarContainer = styled.nav<SidebarStyleProps>`
     }
   }
 
-  width: 100px;
+  width: 60px;
+  min-width: 60px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding-top: 6px;
-  padding-bottom: 10px;
+  padding-bottom: 16px;
   transition: all 0.5s;
   border-top-right-radius: 10px;
   overflow: auto;

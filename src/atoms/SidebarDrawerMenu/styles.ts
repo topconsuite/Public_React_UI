@@ -18,8 +18,8 @@ const SidebarDrawerMenuContainer = styled.div<SidebarDrawerMenuContainerProps>`
   align-items: center;
   justify-content: flex-start;
   opacity: 70%;
-  margin: 15px;
-  padding: ${(props) => (props.type === "primary" ? "20px 15px" : "10px 15px")};/*20px 15px;*/
+  margin: ${(props) => (props.type === "primary" ? "15px" : "0px 15px")};
+  padding: ${(props) => (props.type === "primary" ? "20px 15px" : "10px 15px")};
   border-radius: 5px;
 
   :hover {

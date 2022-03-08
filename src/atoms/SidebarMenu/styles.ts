@@ -25,13 +25,6 @@ const SidebarMenuContainer = styled.div`
   }
 `;
 
-const SidebarMenuTitle = styled.div`
-  color: white;
-  font-weight: 200;
-  font-size: 15px;
-  letter-spacing: 0;
-`;
-
 const SidebarMenuIdentifier = styled.i<SidebarMenuIdentifierProps>`
   position: absolute;
   left: 0px;
@@ -42,4 +35,4 @@ const SidebarMenuIdentifier = styled.i<SidebarMenuIdentifierProps>`
   display: none;
 `;
 
-export { SidebarMenuContainer, SidebarMenuTitle, SidebarMenuIdentifier };
+export { SidebarMenuContainer, SidebarMenuIdentifier };

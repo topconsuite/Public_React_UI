@@ -1,3 +1,3 @@
-import { TextField, TextFieldProps, Drawer } from "@mui/material";
-
-export { TextField, TextFieldProps, Drawer };
+export {
+  TextField, TextFieldProps, Drawer, styled, Tooltip, TooltipProps, tooltipClasses
+} from "@mui/material";
