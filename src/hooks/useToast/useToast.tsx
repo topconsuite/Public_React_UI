@@ -3,7 +3,7 @@ import React, {
 } from "react";
 import { useTransition } from "react-spring";
 
-import { uuid } from "uuidv4";
+import { v4 } from "uuid";
 import $ from "jquery";
 
 import Toast from "../../atoms/Toast";
@@ -46,7 +46,7 @@ const ToastProvider: React.FC = ({ children }) => {
       type, title, description, duration, overwrite
     }: Omit<ToastMessage, "id">) => {
 
-      const id = uuid();
+      const id = v4();
       const toast = {
         id,
         type,
