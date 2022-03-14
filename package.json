@@ -1,7 +1,7 @@
 {
   "name": "@npm-telluria-tecnologia/telluria-ui",
   "description": "Common react components for application development",
-  "version": "1.6.22",
+  "version": "1.6.23",
   "main": "dist/index.js",
   "types": "dist",
   "license": "MIT",
