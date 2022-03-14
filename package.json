@@ -1,7 +1,7 @@
 {
   "name": "@npm-telluria-tecnologia/telluria-ui",
   "description": "Common react components for application development",
-  "version": "1.6.22",
+  "version": "1.6.23",
   "main": "dist/index.js",
   "types": "dist",
   "license": "MIT",
@@ -11,7 +11,12 @@
     "url": "https://gitlab.com/t3105/telluria-ui.git"
   },
   "keywords": [
-    "utils", "telluria", "react", "components", "telluria-ui", "TS"
+    "utils",
+    "telluria",
+    "react",
+    "components",
+    "telluria-ui",
+    "TS"
   ],
   "scripts": {
     "test": "react-scripts test --watchAll=false --coverage",
@@ -38,6 +43,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-html-parser": "^2.0.2",
     "@types/styled-components": "^5.1.4",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "commitizen": "^4.2.2",
@@ -72,7 +78,7 @@
     "react-spring": "^8.0.27",
     "react-svg": "^14.1.11",
     "styled-components": "^5.2.0",
-    "uuidv4": "^6.2.5"
+    "uuid": "^8.3.2"
   },
   "config": {
     "commitizen": {
