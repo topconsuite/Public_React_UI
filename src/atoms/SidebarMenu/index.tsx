@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 
-import Tooltip from "../Tooltip";
+import { ReactSVG } from "react-svg";
 
-import { SidebarMenuContainer, SidebarMenuIdentifier } from "./styles";
+import Tooltip from "../Tooltip";
+import { Skeleton } from "../../libraries/mui/components";
+
+import * as Styled from "./styles";
 
 export interface SidebarMenuProps {
   id: string;
@@ -31,13 +34,17 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
 
   return (
     <Tooltip title={title} position="right">
-      <SidebarMenuContainer
+      <Styled.Container
         tabIndex={-1}
         id={id}
       >
-        <img src={icon} alt="menu Icon" />
-        <SidebarMenuIdentifier identifierColor={identifierColor} />
-      </SidebarMenuContainer>
+        <ReactSVG
+          src={icon}
+          alt="menu Icon"
+          loading={() => <Skeleton variant="rectangular" animation="wave" width={20} height={20} />}
+        />
+        <Styled.Identifier identifierColor={identifierColor} />
+      </Styled.Container>
     </Tooltip>
   );
 };
