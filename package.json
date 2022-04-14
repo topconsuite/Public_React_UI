@@ -26,9 +26,7 @@
     "pubnpm": "yarn build && yarn publish --no-git-tag-version",
     "lint-check": "eslint src --ext js,ts,tsx",
     "lint-fix": "eslint src --fix --ext js,ts,tsx",
-    "prepare": "husky install",
-    "link-package": "yarn link && npm link ../../Rastrin/Frontend/node_modules/react/",
-    "unlink-package": "yarn unlink && npm unlink ../../Rastrin/Frontend/react-app-test-npm-library/node_modules/react/"
+    "prepare": "husky install"
   },
   "peerDependencies": {
     "react": ">= 16.8",

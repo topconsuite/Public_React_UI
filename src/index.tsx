@@ -2,9 +2,7 @@ import TelluriaProvider from "./hooks";
 import { useToast } from "./hooks/useToast/useToast";
 
 export { TelluriaProvider, useToast };
-
 export { Sidebar, SpeedDial, SidebarDrawer } from "./molecules";
-
 export {
   TextField,
   FloatActionButton,
@@ -12,5 +10,6 @@ export {
   SidebarMenu,
   SidebarMenuProps,
   SidebarDrawerMenuProps,
-  SidebarDrawerMenu
+  SidebarDrawerMenu,
+  Button
 } from "./atoms";
