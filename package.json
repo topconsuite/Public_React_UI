@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "@mui/icons-material": "^5.2.5",
+    "@mui/lab": "^5.0.0-alpha.77",
     "@mui/material": "^5.2.7",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
