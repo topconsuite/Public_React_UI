@@ -4,7 +4,7 @@ interface SidebarMenuIdentifierProps {
   identifierColor: string;
 }
 
-const SidebarMenuContainer = styled.div`
+const Container = styled.div`
   position: relative;
   user-select: none;
 
@@ -15,24 +15,31 @@ const SidebarMenuContainer = styled.div`
   opacity: 70%;
   padding: 15px;
 
+  > :first-child {
+    > :first-child {
+      width: 21px;
+      height: 21px;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
   :hover {
     opacity: 100%;
     cursor: pointer;
-    > i {
-      display: block;
-      opacity: 70%;
-    }
   }
 `;
 
-const SidebarMenuIdentifier = styled.i<SidebarMenuIdentifierProps>`
+const Identifier = styled.i<SidebarMenuIdentifierProps>`
   position: absolute;
   left: 0px;
   width: 6px;
-  height:50px;
+  height:90%;
   border-radius: 50px;
   background-color: ${(props) => props.identifierColor};
   display: none;
 `;
 
-export { SidebarMenuContainer, SidebarMenuIdentifier };
+export { Container, Identifier };
