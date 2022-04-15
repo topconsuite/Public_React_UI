@@ -5,6 +5,7 @@ import SpeedDialMenu from "./SpeedDialMenu";
 import SidebarMenu, { SidebarMenuProps } from "./SidebarMenu";
 import SidebarDrawerMenu, { SidebarDrawerMenuProps } from "./SidebarDrawerMenu";
 import Button from "./Button";
+import DataTable from "./DataTable";
 
 export {
   TextField,
@@ -15,5 +16,6 @@ export {
   SidebarMenuProps,
   SidebarDrawerMenuProps,
   SidebarDrawerMenu,
-  Button
+  Button,
+  DataTable
 };
