@@ -11,6 +11,5 @@ export {
   SidebarMenuProps,
   SidebarDrawerMenuProps,
   SidebarDrawerMenu,
-  Button,
-  DataTable
+  Button
 } from "./atoms";
