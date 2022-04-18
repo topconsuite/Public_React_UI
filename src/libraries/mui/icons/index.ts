@@ -1,1 +1,4 @@
-export { Add, Close } from "@mui/icons-material";
+export {
+  Add, Close, Search, ArrowForwardIos, ArrowBackIos, KeyboardDoubleArrowRight,
+  KeyboardDoubleArrowLeft
+} from "@mui/icons-material";

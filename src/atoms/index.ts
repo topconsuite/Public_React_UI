@@ -4,6 +4,7 @@ import FloatActionButton from "./FloatActionButton";
 import SpeedDialMenu from "./SpeedDialMenu";
 import SidebarMenu, { SidebarMenuProps } from "./SidebarMenu";
 import SidebarDrawerMenu, { SidebarDrawerMenuProps } from "./SidebarDrawerMenu";
+import Button from "./Button";
 
 export {
   TextField,
@@ -13,5 +14,6 @@ export {
   SidebarMenu,
   SidebarMenuProps,
   SidebarDrawerMenuProps,
-  SidebarDrawerMenu
+  SidebarDrawerMenu,
+  Button
 };
