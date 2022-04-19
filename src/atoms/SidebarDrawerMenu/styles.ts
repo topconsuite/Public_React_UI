@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-interface SidebarDrawerMenuContainerProps {
+interface ContainerProps {
   secondaryColor: string
   type?: "primary" | "secondary";
 }
 
-interface SidebarMenuIdentifierProps {
+interface IdentifierProps {
   identifierColor: string;
 }
 
-const SidebarDrawerMenuContainer = styled.div<SidebarDrawerMenuContainerProps>`
+const Container = styled.div<ContainerProps>`
   position: relative;
   user-select: none;
   background-color: ${(props) => (props.type === "primary" ? props.secondaryColor : "inherit")};
@@ -25,19 +25,22 @@ const SidebarDrawerMenuContainer = styled.div<SidebarDrawerMenuContainerProps>`
   :hover {
     opacity: 100%;
     cursor: pointer;
-    > i {
-      display: block;
-      opacity: 70%;
-    }
   }
 
   > :first-child {
-    width: 23px;
+    > :first-child {
+      width: 23px;
+      height: 23px;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 
 `;
 
-const SidebarDrawerMenuTitle = styled.div`
+const Title = styled.div`
   color: white;
   font-weight: 200;
   font-size: 17px;
@@ -45,7 +48,7 @@ const SidebarDrawerMenuTitle = styled.div`
   padding-left: 15px;
 `;
 
-const SidebarDrawerMenuIdentifier = styled.i<SidebarMenuIdentifierProps>`
+const Identifier = styled.i<IdentifierProps>`
   position: absolute;
   left: 0px;
   width: 6px;
@@ -55,4 +58,4 @@ const SidebarDrawerMenuIdentifier = styled.i<SidebarMenuIdentifierProps>`
   display: none;
 `;
 
-export { SidebarDrawerMenuContainer, SidebarDrawerMenuTitle, SidebarDrawerMenuIdentifier };
+export { Container, Title, Identifier };

@@ -10,7 +10,7 @@ interface SidebarStyleProps {
 const SidebarDrawerContainer = styled(Drawer)`
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
     border-top-right-radius: 15px;
-    background-color: none;
+    background-color: none !important;
   }
 `;
 

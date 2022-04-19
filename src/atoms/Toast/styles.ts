@@ -28,6 +28,10 @@ export const ToastContainer = styled.div`
   padding: 30px;
   overflow: hidden;
   max-width: 100%;
+
+  :empty {
+    padding: 0 !important;
+  }
 `;
 export const ToastContent = styled(animated.div)<ContainerProps>`
   z-index: 99999;
