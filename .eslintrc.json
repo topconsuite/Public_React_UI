@@ -24,24 +24,19 @@
     "@typescript-eslint/no-shadow": ["error"],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "max-len": ["error", { "comments": 150, "code": 150 }],
     "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "no-use-before-define": "off",
     "no-shadow": "off",
+    "no-unused-expressions": "off",
     "quotes": ["error", "double"],
+    "quote-props": "off",
     "comma-dangle": ["error", "never"],
     "import/prefer-default-export": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
+    "import/extensions": "off",
     "padded-blocks": ["error", { "classes": "always" }],
     "padding-line-between-statements": [
       "error",
