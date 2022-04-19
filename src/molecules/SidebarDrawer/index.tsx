@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import { useAtom } from "../../libraries/jotai";
 import { Close } from "../../libraries/mui/icons";
+import { Skeleton } from "../../libraries/mui/components";
 
 import { sidebarDrawerAtom } from "../../states/SidebarDrawerContext";
 
@@ -38,7 +39,10 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
     <SidebarDrawerContainer anchor={anchor} open={open} onClose={sidebarDrawer.onClose}>
       <SidebarDrawerContent primarycolor={primarycolor}>
         <SidebarDrawerHeader primarycolor={primarycolor}>
-          <SidebarDrawerProductIcon src={productIconPath} />
+          <SidebarDrawerProductIcon
+            src={productIconPath}
+            loading={() => <Skeleton variant="rectangular" animation="wave" width={150} height={49} />}
+          />
           <Close onClick={onClose} />
         </SidebarDrawerHeader>
         <SidebarDrawerBody>

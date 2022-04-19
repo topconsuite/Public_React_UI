@@ -1,9 +1,13 @@
 import React, { useCallback, useEffect } from "react";
 
-import { sidebarDrawerAtom } from "../../states/SidebarDrawerContext";
-import { useAtom } from "../../libraries/jotai";
+import { ReactSVG } from "react-svg";
 
-import { SidebarDrawerMenuContainer, SidebarDrawerMenuTitle, SidebarDrawerMenuIdentifier } from "./styles";
+import { sidebarDrawerAtom } from "../../states/SidebarDrawerContext";
+
+import { useAtom } from "../../libraries/jotai";
+import { Skeleton } from "../../libraries/mui/components";
+
+import * as Styled from "./styles";
 
 export interface SidebarDrawerMenuProps {
   id: string;
@@ -43,17 +47,21 @@ const SidebarDrawerMenu: React.FC<SidebarDrawerMenuProps> = ({
   }, [onClick, sidebarDrawer.onClose]);
 
   return (
-    <SidebarDrawerMenuContainer
+    <Styled.Container
       onClick={handleClick}
       tabIndex={-1}
       id={id}
       secondaryColor={secondaryColor}
       type={type}
     >
-      <img src={icon} alt="menu Icon" />
-      <SidebarDrawerMenuTitle>{title}</SidebarDrawerMenuTitle>
-      { type === "primary" ? <SidebarDrawerMenuIdentifier identifierColor={identifierColor} /> : null }
-    </SidebarDrawerMenuContainer>
+      <ReactSVG
+        src={icon}
+        alt="menu Icon"
+        loading={() => <Skeleton variant="rectangular" animation="wave" width={20} height={20} />}
+      />
+      <Styled.Title>{title}</Styled.Title>
+      { type === "primary" ? <Styled.Identifier identifierColor={identifierColor} /> : null }
+    </Styled.Container>
   );
 };
 
