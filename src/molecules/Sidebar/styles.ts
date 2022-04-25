@@ -22,8 +22,8 @@ const Container = styled.nav<SidebarStyleProps>`
     }
   }
 
-  width: 60px;
-  min-width: 60px;
+  width: 55px;
+  min-width: 55px;
   height: 100%;
   display: flex;
   flex-direction: column;
