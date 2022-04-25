@@ -36,7 +36,7 @@ const Identifier = styled.i<SidebarMenuIdentifierProps>`
   position: absolute;
   left: 0px;
   width: 6px;
-  height:90%;
+  height: 80%;
   border-radius: 50px;
   background-color: ${(props) => props.identifierColor};
   display: none;
