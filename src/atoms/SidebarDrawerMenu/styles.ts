@@ -18,10 +18,13 @@ const Container = styled.div<ContainerProps>`
   align-items: center;
   justify-content: flex-start;
   opacity: 70%;
-  margin: ${(props) => (props.type === "primary" ? "15px" : "0px 15px")};
-  padding: ${(props) => (props.type === "primary" ? "20px 15px" : "10px 15px")};
+  margin: ${(props) => (props.type === "primary" ? "5px 10px" : "0px 15px")};
+  padding: ${(props) => (props.type === "primary" ? "15px" : "10px 15px")};
   border-radius: 5px;
-
+  
+  :first-child {
+    margin: ${(props) => (props.type === "primary" ? "15px 10px 5px" : "0px 15px")};
+  }
   :hover {
     opacity: 100%;
     cursor: pointer;
@@ -43,7 +46,7 @@ const Container = styled.div<ContainerProps>`
 const Title = styled.div`
   color: white;
   font-weight: 200;
-  font-size: 17px;
+  font-size: 0.9rem;
   letter-spacing: 0;
   padding-left: 15px;
 `;
