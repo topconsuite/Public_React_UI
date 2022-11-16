@@ -23,7 +23,6 @@ const SidebarDrawerContent = styled.div<SidebarStyleProps>`
   padding-top: 15px;
   padding-bottom: 15px;
   transition: all 0.5s;
-  border-top-right-radius: 15px;
   overflow: auto;
   overflow-x: hidden;
   background-color: ${(props) => props.primarycolor};
