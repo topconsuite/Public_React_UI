@@ -22,9 +22,6 @@ const Container = styled.div<ContainerProps>`
   padding: ${(props) => (props.type === "primary" ? "15px" : "10px 15px")};
   border-radius: 5px;
   
-  :first-child {
-    margin: ${(props) => (props.type === "primary" ? "15px 10px 5px" : "0px 15px")};
-  }
   :hover {
     opacity: 100%;
     cursor: pointer;

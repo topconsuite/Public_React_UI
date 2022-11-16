@@ -9,7 +9,6 @@ interface SidebarStyleProps {
 
 const SidebarDrawerContainer = styled(Drawer)`
   .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
-    border-top-right-radius: 15px;
     background-color: none !important;
   }
 `;
@@ -56,6 +55,10 @@ const SidebarDrawerBody = styled.div`
   padding-bottom: 20px;
   overflow: auto;
   
+  a:first-child {
+    display: block;
+    margin-top: 15px;
+  }
   .active {
     * {
       opacity: 100%;
