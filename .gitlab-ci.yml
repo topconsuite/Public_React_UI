@@ -41,7 +41,6 @@ NPM publish:
   extends: .base-rules
   needs: []
   script:
-    - "npm install --global yarn"
     - 'echo "//registry.npmjs.org/:_authToken=${NPM_AUTOMATION_TOKEN}" > .npmrc'
     - "yarn"
     - "yarn pubnpm"
