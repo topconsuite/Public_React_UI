@@ -2,6 +2,8 @@ import TelluriaProvider from "./hooks";
 import { useToast } from "./hooks/useToast/useToast";
 
 export { TelluriaProvider, useToast };
+export { SurveyPlatform } from "./store/global.enum";
+export { ISurveyAdditionalInfo } from "./atoms/Survey/ZohoSurveyScript";
 export { Sidebar, SpeedDial, SidebarDrawer } from "./molecules";
 export {
   TextField,
@@ -11,5 +13,6 @@ export {
   SidebarMenuProps,
   SidebarDrawerMenuProps,
   SidebarDrawerMenu,
-  Button
+  Button,
+  Survey
 } from "./atoms";
