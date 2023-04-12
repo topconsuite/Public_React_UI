@@ -37,7 +37,7 @@ Sonarqube analyze:
     - "sonar-scanner"
   allow_failure: true
 NPM publish:
-  image: node:18-alpine
+  image: node:16-alpine
   stage: NPM publish
   extends: .base-rules
   needs: [ ]
