@@ -37,13 +37,13 @@ Sonarqube analyze:
     - "sonar-scanner"
   allow_failure: true
 NPM publish:
+  image: node:18-alpine
   stage: NPM publish
   extends: .base-rules
   needs: [ ]
   script:
     - "npm install --global yarn"
     - 'echo "//registry.npmjs.org/:_authToken=${NPM_AUTOMATION_TOKEN}" > .npmrc'
-    - "export PATH=$PATH:$(yarn global bin)"
     - "yarn"
     - "yarn pubnpm"
   allow_failure: true
