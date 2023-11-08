@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { ReactSVG } from "react-svg";
 
@@ -16,31 +16,20 @@ export interface SidebarMenuProps {
 
 const SidebarMenu: React.FC<SidebarMenuProps> = ({
   id, title, icon, identifierColor
-}) => {
-
-  const sidebarParentIsAnAnchorElement = () => {
-    const element = document.getElementById(id);
-
-    const tagName = element?.parentElement?.tagName.toUpperCase();
-
-    return tagName === "A";
-  };
-
-  return (
-    <Tooltip title={title} position="right">
-      <Styled.Container
-        tabIndex={-1}
-        id={id}
-      >
-        <ReactSVG
-          src={icon}
-          alt="menu Icon"
-          loading={() => <Skeleton variant="rectangular" animation="wave" width={20} height={20} />}
-        />
-        <Styled.Identifier identifierColor={identifierColor} />
-      </Styled.Container>
-    </Tooltip>
-  );
-};
+}) => (
+  <Tooltip title={title} position="right">
+    <Styled.Container
+      tabIndex={-1}
+      id={id}
+    >
+      <ReactSVG
+        src={icon}
+        alt="menu Icon"
+        loading={() => <Skeleton variant="rectangular" animation="wave" width={20} height={20} />}
+      />
+      <Styled.Identifier identifierColor={identifierColor} />
+    </Styled.Container>
+  </Tooltip>
+);
 
 export default SidebarMenu;
