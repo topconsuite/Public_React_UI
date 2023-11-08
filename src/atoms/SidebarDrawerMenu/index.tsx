@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 
 import { ReactSVG } from "react-svg";
 
@@ -24,20 +24,6 @@ const SidebarDrawerMenu: React.FC<SidebarDrawerMenuProps> = ({
 }) => {
 
   const [sidebarDrawer] = useAtom(sidebarDrawerAtom);
-
-  const sidebarParentIsAnAnchorElement = () => {
-    const element = document.getElementById(id);
-
-    const tagName = element?.parentElement?.tagName.toUpperCase();
-
-    return tagName === "A";
-  };
-
-  useEffect(() => {
-    if (!sidebarParentIsAnAnchorElement()) {
-      throw new Error("SidebarDrawerMenu must be used as a child of HTMLAnchorElement.");
-    }
-  }, []);
 
   const handleClick = useCallback(() => {
     if (onClick) onClick();
