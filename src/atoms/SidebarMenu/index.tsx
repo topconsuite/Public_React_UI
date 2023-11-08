@@ -26,12 +26,6 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
     return tagName === "A";
   };
 
-  useEffect(() => {
-    if (!sidebarParentIsAnAnchorElement()) {
-      throw new Error("SidebarMenu must be used as a child of HTMLAnchorElement.");
-    }
-  }, []);
-
   return (
     <Tooltip title={title} position="right">
       <Styled.Container
