@@ -20,6 +20,7 @@ interface SidebarDrawerProps {
   bodyChildren: JSX.Element;
   footerChildren: JSX.Element;
   primarycolor: string;
+  productIconClass?: string;
   productIconPath: string;
   productIconFallbackPath?: string;
   open: boolean;
@@ -27,7 +28,8 @@ interface SidebarDrawerProps {
 }
 
 const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
-  anchor, open, onClose, bodyChildren, footerChildren, primarycolor, productIconPath, productIconFallbackPath
+  anchor, open, onClose, bodyChildren, footerChildren, primarycolor, productIconPath, productIconFallbackPath,
+  productIconClass
 }) => {
 
   const [sidebarDrawer, setSidebarDrawer] = useAtom(sidebarDrawerAtom);
@@ -47,6 +49,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
       <SidebarDrawerContent primarycolor={primarycolor}>
         <SidebarDrawerHeader primarycolor={primarycolor}>
           <SidebarDrawerProductIcon
+            className={productIconClass}
             src={productIconPath}
             loading={() => <Skeleton variant="rectangular" animation="wave" width={150} height={49} />}
             fallback={getFallbackProductIcon}
@@ -66,7 +69,8 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
 
 SidebarDrawer.defaultProps = {
   anchor: "left",
-  productIconFallbackPath: ""
+  productIconFallbackPath: "",
+  productIconClass: ""
 };
 
 export default SidebarDrawer;
