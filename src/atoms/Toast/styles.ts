@@ -57,12 +57,14 @@ export const ToastContent = styled(animated.div)<ContainerProps>`
 
   div {
     flex: 1;
+    font-family: 'Roboto', sans-serif;
 
     p {
       margin-top: 4px;
       font-size: 1rem;
       opacity: 0.8;
       line-height: 20px;
+      font-family: 'Roboto', sans-serif;
     }
   }
 

@@ -25,6 +25,7 @@ const SidebarDrawerContent = styled.div<SidebarStyleProps>`
   overflow: auto;
   overflow-x: hidden;
   background-color: ${(props) => props.primarycolor};
+  font-family: 'Roboto', sans-serif;
 `;
 
 const SidebarDrawerHeader = styled.div<SidebarStyleProps>`
@@ -37,6 +38,7 @@ const SidebarDrawerHeader = styled.div<SidebarStyleProps>`
   color: white;
   box-shadow: -13px 5px 6px 3px ${(props) => props.primarycolor};
   z-index: 10;
+  font-family: 'Roboto', sans-serif;
 
   > :last-child {
     cursor: pointer;

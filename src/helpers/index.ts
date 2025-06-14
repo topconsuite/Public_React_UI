@@ -1,3 +1,3 @@
-const emptyFunction = () => { /* empty */ };
+import iconOptions from "./iconOptions";
 
-export { emptyFunction };
+export { iconOptions };

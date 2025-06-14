@@ -1,17 +1,17 @@
 import React from "react";
-
-import FloatActionButton from "../../atoms/FloatActionButton";
-
-import { SpeedDialContainer, SpeedDialMenus, SpeedDialModalArea } from "./styles";
+import {
+  SpeedDialContainer, SpeedDialMenus, SpeedDialModalArea, SpeedDialButton
+} from "./styles";
 
 interface SpeedDialProps {
   primaryColor: string;
   secondColor: string;
   size?: "small" | "medium" | "large";
   icon: React.ReactNode;
-  open: boolean,
-  onOpen: () => void,
-  onClose: () => void
+  open: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  children?: React.ReactNode;
 }
 
 const SpeedDial: React.FC<SpeedDialProps> = ({
@@ -19,20 +19,26 @@ const SpeedDial: React.FC<SpeedDialProps> = ({
 }) => (
   <SpeedDialContainer>
     {open && <SpeedDialModalArea onClick={onClose} />}
-    <FloatActionButton
+    <SpeedDialButton
       onClick={open ? onClose : onOpen}
       primaryColor={primaryColor}
       secondColor={secondColor}
       size={size}
-      clicked={open}
-      icon={icon}
-    />
-    {open && <SpeedDialMenus>{children}</SpeedDialMenus>}
+      open={open}
+    >
+      <>{icon}</>
+    </SpeedDialButton>
+    {open && (
+    <SpeedDialMenus>
+      <>{children}</>
+    </SpeedDialMenus>
+    )}
   </SpeedDialContainer>
 );
 
 SpeedDial.defaultProps = {
-  size: "medium"
+  size: "medium",
+  children: undefined
 };
 
 export default SpeedDial;
