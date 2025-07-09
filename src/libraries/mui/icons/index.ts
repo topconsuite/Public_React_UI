@@ -43,5 +43,9 @@ export {
   Storage,
   Info,
   List,
-  Share
+  Share,
+  Assessment,
+  BarChart,
+  Build,
+  History
 } from "@mui/icons-material";

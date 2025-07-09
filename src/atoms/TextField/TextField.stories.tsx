@@ -3,7 +3,6 @@ import { Form } from "@unform/web";
 import React from "react";
 import TextField from "./index";
 
-// Definindo o tipo específico para as props do TextField
 type TextFieldStoryProps = {
   name: string;
   label?: string;

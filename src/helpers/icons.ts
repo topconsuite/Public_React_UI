@@ -104,15 +104,15 @@ const iconTypes = {
   InvoiceAndPreparingAsset
 };
 
-export default iconTypes;
-
 /**
  * Função auxiliar para uso com o Storybook
  * Configura o argType para o campo de ícone
  */
-export const iconOptions = () => ({
+export const iconOptions = {
   control: "select",
-  options: Object.keys(iconOptions),
-  // mapping: iconOptions,
+  options: Object.keys(iconTypes),
   description: "Ícone SVG"
-});
+};
+
+export { iconTypes };
+export default iconOptions;

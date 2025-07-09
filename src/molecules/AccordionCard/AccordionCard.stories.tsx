@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import AccordionCard from ".";
-// Linha 3: Corrigir de:
-// import 'src/atoms/KanbanBasicCard/index';
-// Para:
+
 import "@molecules/KanbanBasicCard";
 
 const meta: Meta<typeof AccordionCard> = {

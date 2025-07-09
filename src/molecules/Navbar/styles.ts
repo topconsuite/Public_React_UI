@@ -12,6 +12,9 @@ const Container = styled.nav`
   padding: 10px 15px 8px 15px;
   transition: all 0.5s;
   width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
   color: ${(props) => props.theme.colors.primary};
   font-family: 'Roboto', sans-serif;
 
@@ -50,8 +53,9 @@ const Product = styled.div`
 `;
 
 const ProductIcon = styled(ReactSVG)`
-
   width: 200px;
+  max-width: 40vw;
+  flex-shrink: 1;
 
   svg {
     width: 100%;
@@ -60,14 +64,22 @@ const ProductIcon = styled(ReactSVG)`
 
   @media ( max-width: ${windowWidth.laptop.large} ) {
     width: 180px;
+    max-width: 35vw;
+  }
+
+  @media ( max-width: ${windowWidth.tablet} ) {
+    width: 150px;
+    max-width: 30vw;
   }
 
   @media ( max-width: ${windowWidth.mobile.large} ) {
-    width: 150px;
+    width: 120px;
+    max-width: 25vw;
   }
 
   @media ( max-width: ${windowWidth.mobile.small} ) {
-    width: 120px;
+    width: 100px;
+    max-width: 20vw;
   }
 `;
 
@@ -77,6 +89,7 @@ const Version = styled.p`
   position: absolute;
   bottom: 0;
   right: 0;
+  margin: 0px;
 `;
 
 export {

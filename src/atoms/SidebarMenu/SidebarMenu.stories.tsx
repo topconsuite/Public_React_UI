@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import iconOptions from "@/helpers/iconOptions";
+import { iconOptions } from "@/helpers";
 import SidebarMenu from "./index";
 
 const meta: Meta<typeof SidebarMenu> = {
@@ -25,6 +25,10 @@ const meta: Meta<typeof SidebarMenu> = {
     identifierColor: {
       control: "color",
       description: "Cor do identificador"
+    },
+    active: {
+      control: "boolean",
+      description: "Define se o menu está ativo/selecionado"
     }
   }
 };
@@ -36,7 +40,8 @@ export const Default: Story = {
   args: {
     id: "menu-home",
     title: "Home",
-    icon: "LogoutAsset"
+    icon: "LogoutAsset",
+    identifierColor: "#000000"
   }
 };
 
@@ -64,5 +69,15 @@ export const ProfileMenu: Story = {
     title: "Perfil do Usuário",
     icon: "CaretRight",
     identifierColor: "#9C27B0"
+  }
+};
+
+export const ActiveMenu: Story = {
+  args: {
+    id: "menu-active",
+    title: "Menu Ativo",
+    icon: "SettingsAsset",
+    identifierColor: "#ff9900",
+    active: true
   }
 };

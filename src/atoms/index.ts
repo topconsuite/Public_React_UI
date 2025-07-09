@@ -1,4 +1,3 @@
-// Adicionar a exportação do Span:
 import TextField from "./TextField";
 import Toast from "./Toast";
 import SpeedDialMenu from "./SpeedDialMenu";
@@ -7,6 +6,7 @@ import SidebarDrawerMenu, { SidebarDrawerMenuProps } from "./SidebarDrawerMenu";
 import Button from "./Button";
 import Survey from "./Survey";
 import Span from "./Span";
+import ActionsCardKanban from "./ActionsCardKanban";
 
 export {
   TextField,
@@ -18,5 +18,6 @@ export {
   SidebarDrawerMenu,
   Button,
   Survey,
-  Span
+  Span,
+  ActionsCardKanban
 };

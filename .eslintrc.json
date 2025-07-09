@@ -21,7 +21,8 @@
   },
   "plugins": [
     "react",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "react-hooks"
   ],
   "rules": {
     "@typescript-eslint/no-use-before-define": [
@@ -100,7 +101,12 @@
           "var"
         ]
       }
-    ]
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/default-props-match-prop-types": "off"
   },
   "settings": {
     "import/resolver": {

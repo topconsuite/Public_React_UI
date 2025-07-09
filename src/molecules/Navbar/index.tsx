@@ -1,23 +1,28 @@
-import React, { useCallback, useState } from "react";
-// Trocar esta linha:
-// import * as packageJson from 'src/../package.json';
-// Por:
+import * as React from "react";
+import { useCallback, useState } from "react";
+import {
+  Dashboard as DashboardIcon,
+  Settings as SettingsIcon,
+  People as PeopleIcon,
+  Assessment as AssessmentIcon,
+  Phone as PhoneIcon,
+  GetApp as GetAppIcon,
+  DirectionsCar as VehicleIcon,
+  Schedule as ScheduleIcon
+} from "@mui/icons-material";
 
 // region Assets
-import { TopconDispatchAlternativeLogoAsset, TopconDispatchLogoAsset } from "@assets/company/index";
+import {
+  TopconDispatchLogoAsset
+} from "@assets/company/index";
 // endregion Assets
 // region Hooks
-// Trocar:
-// import useTheme from "@hooks/useTheme";
-// Por:
-import { useTheme } from "@hooks/index";
 // endregion Hooks
 // region Libraries
 import { Menu } from "@libraries/mui/icons";
 // endregion Libraries
 // region Molecules
-import SidebarDrawerMenus from "@molecules/SidebarDrawerMenus";
-import SidebarDrawerSecondaryMenus from "@molecules/SidebarDrawerSecondaryMenus";
+import MenuFleet from "@molecules/MenuFleet";
 // endregion Molecules
 // region Organisms
 import NavbarIcons from "@organisms/NavbarIcons";
@@ -25,14 +30,26 @@ import * as packageJson from "../../../package.json";
 // endregion Organisms
 // region Styles
 import * as Styled from "./styles";
-import SidebarDrawer from "../SidebarDrawer";
 // endregion Styles
 
+// region Interfaces
+interface NavbarProps {
+  productIconSrc?: string;
+  productIconAlt?: string;
+  showLogo?: boolean;
+}
+// endregion Interfaces
+
 // Component
-const Navbar: React.FC = () => {
+
+const Navbar: React.FC<NavbarProps> = ({
+  productIconSrc = TopconDispatchLogoAsset,
+  productIconAlt = "Topcon Dispatch icon",
+  showLogo = true
+}) => {
 
   // region Hooks
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   // endregion Hooks
   // region States
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -46,30 +63,110 @@ const Navbar: React.FC = () => {
     setOpenSidebar((value) => !value);
   }, []);
 
+  // Mock data seguindo a estrutura do MenuFleet.stories.tsx
+  const mockUser = {
+    name: "João Silva",
+    email: "joao.silva@empresa.com",
+    admin: true,
+    super_admin: false
+  };
+
+  const mockMenus = {
+    "Principal": [
+      {
+        id: "dashboard",
+        text: "Dashboard",
+        icon: <DashboardIcon />,
+        link: "/dashboard"
+      },
+      {
+        id: "vehicles",
+        text: "Veículos",
+        icon: <VehicleIcon />,
+        link: "/vehicles"
+      },
+      {
+        id: "schedule",
+        text: "Agendamento",
+        icon: <ScheduleIcon />,
+        link: "/schedule"
+      }
+    ],
+    "Configurações": [
+      {
+        id: "users",
+        text: "Usuários",
+        icon: <PeopleIcon />,
+        link: "/users",
+        isPrivate: true
+      },
+      {
+        id: "settings",
+        text: "Configurações",
+        icon: <SettingsIcon />,
+        link: "/settings"
+      },
+      {
+        id: "reports",
+        text: "Relatórios",
+        icon: <AssessmentIcon />,
+        link: "/reports"
+      }
+    ],
+    "Suporte": [
+      {
+        id: "contact",
+        text: "Fale Conosco",
+        icon: <PhoneIcon />,
+        component: "modalContactUs"
+      },
+      {
+        id: "install",
+        text: "Instalar App",
+        icon: <GetAppIcon />,
+        component: "installPWA"
+      }
+    ]
+  };
+
   // endregion Callbacks / Functions
 
   return (
     <Styled.Container>
       <Menu onClick={toggleOpenSidebar} />
-      <SidebarDrawer
-        primarycolor={theme.colors.primary}
-        productIconPath={TopconDispatchAlternativeLogoAsset}
+      <MenuFleet
         open={openSidebar}
         onClose={toggleOpenSidebar}
-        bodyChildren={<SidebarDrawerMenus />}
-        footerChildren={<SidebarDrawerSecondaryMenus />}
+        user={mockUser}
+        menus={mockMenus}
+        version={packageJson.version}
+        onSignOut={() => {
+          // console.log("Sign out clicked");
+          setOpenSidebar(false);
+        }}
+        onHelpClick={() => {
+          // console.log("Help clicked");
+        }}
       />
-      <Styled.Product>
-        <Styled.ProductIcon src={TopconDispatchLogoAsset} alt="Topcon Dispatch icon" />
-        <Styled.Version>
-          v
-          {packageJson.version}
-        </Styled.Version>
-      </Styled.Product>
+      {showLogo && (
+        <Styled.Product>
+          <Styled.ProductIcon src={productIconSrc} alt={productIconAlt} />
+          <Styled.Version>
+            v
+            {packageJson.version}
+          </Styled.Version>
+        </Styled.Product>
+      )}
       <NavbarIcons />
 
     </Styled.Container>
   );
+};
+
+Navbar.defaultProps = {
+  productIconSrc: TopconDispatchLogoAsset,
+  productIconAlt: "Topcon Dispatch icon",
+  showLogo: true
 };
 
 export default React.memo(Navbar);

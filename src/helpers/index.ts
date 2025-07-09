@@ -1,3 +1,8 @@
-import iconOptions from "./iconOptions";
+import iconTypes, { iconOptions } from "./icons";
 
-export { iconOptions };
+/**
+ * Função vazia para uso como placeholder em callbacks
+ */
+export const emptyFunction = () => {};
+
+export { iconTypes, iconOptions };

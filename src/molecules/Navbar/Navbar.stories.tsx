@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import { iconTypes } from "@assets/company/index";
 import Navbar from "./index";
 
 const meta: Meta<typeof Navbar> = {
@@ -10,21 +11,26 @@ const meta: Meta<typeof Navbar> = {
       autodocs: true
     }
   },
-  tags: ["autodocs"]
+  argTypes: {
+    productIconSrc: {
+      control: { type: "select" },
+      options: Object.keys(iconTypes),
+      description: "Ícone SVG",
+      mapping: iconTypes
+    },
+    productIconAlt: {
+      control: { type: "text" },
+      description: "Alt text for the product icon"
+    }
+  }
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {}
-};
-
-export const WithDarkTheme: Story = {
-  args: {},
-  parameters: {
-    backgrounds: {
-      default: "dark"
-    }
+  args: {
+    productIconSrc: "TopconDispatchLogoAsset",
+    productIconAlt: "Topcon icon"
   }
 };

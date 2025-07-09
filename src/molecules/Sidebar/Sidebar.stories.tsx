@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import React from "react";
+import { useTheme } from "@/hooks";
 import Sidebar from "./index";
 import SidebarMenu from "../../atoms/SidebarMenu";
 
@@ -36,48 +37,34 @@ const SampleMenus = (
     <SidebarMenu
       id="menu-1"
       title="Dashboard"
-      icon=""
-      identifierColor="#2196F3"
+      icon="ConcreteAsset"
+      identifierColor="#ff9900"
+      active
     />
     <SidebarMenu
       id="menu-2"
       title="Usuários"
-      icon=""
-      identifierColor="#4CAF50"
+      icon="SettingsAsset"
+      identifierColor="#b3bfcb"
     />
     <SidebarMenu
       id="menu-3"
       title="Configurações"
-      icon=""
-      identifierColor="#FF9800"
+      icon="EditAsset"
+      identifierColor="#b3bfcb"
     />
   </>
 );
 
+const SidebarWithTheme = (args: { children?: React.ReactNode }) => {
+  const { theme } = useTheme();
+
+  return <Sidebar {...args} primaryColor={theme.colors.primary} />;
+};
+
 export const Default: Story = {
+  render: (args) => <SidebarWithTheme {...args} />,
   args: {
-    primaryColor: "#1976D2",
-    children: SampleMenus
-  }
-};
-
-export const DarkTheme: Story = {
-  args: {
-    primaryColor: "#212121",
-    children: SampleMenus
-  }
-};
-
-export const GreenTheme: Story = {
-  args: {
-    primaryColor: "#388E3C",
-    children: SampleMenus
-  }
-};
-
-export const PurpleTheme: Story = {
-  args: {
-    primaryColor: "#7B1FA2",
     children: SampleMenus
   }
 };

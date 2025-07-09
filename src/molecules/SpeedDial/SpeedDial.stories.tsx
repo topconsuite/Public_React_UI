@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Add } from "@libraries/mui/icons";
 import SpeedDialMenu from "@atoms/SpeedDialMenu";
 import React from "react";
-import { useTheme } from "@hooks/index";
+import { useTheme } from "@/hooks/index";
 import { AddAPhoto } from "@mui/icons-material";
 import SpeedDial from "./index";
 
@@ -44,7 +44,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 const onClickHandle = () => null;
 
-// Componente helper para usar o hook dentro do render
 const SpeedDialWithTheme = (args: React.ComponentProps<typeof SpeedDial>) => {
   const { theme } = useTheme();
 

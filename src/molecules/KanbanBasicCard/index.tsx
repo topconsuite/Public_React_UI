@@ -55,11 +55,4 @@ export const KanbanBasicCard: React.FC<KanbanBasicCardProps> = ({
   );
 };
 
-KanbanBasicCard.defaultProps = {
-  status: "",
-  statusColor: "",
-  onClick: () => null,
-  id: ""
-};
-
 export default KanbanBasicCard;

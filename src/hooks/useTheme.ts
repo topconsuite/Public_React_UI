@@ -1,6 +1,5 @@
 import { atom, useAtom } from "../libraries/jotai";
 
-// Definição básica do tema
 interface Theme {
   colors: {
     primary: string;
@@ -20,7 +19,7 @@ interface Theme {
 
 const lightTheme: Theme = {
   colors: {
-    primary: "#1976d2",
+    primary: "#002951",
     secondary: "#dc004e",
     tertiary: "#9c27b0",
     background: "#ffffff",

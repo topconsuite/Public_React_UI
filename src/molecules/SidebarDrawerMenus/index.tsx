@@ -2,7 +2,6 @@ import React from "react";
 import SidebarDrawerMenu from "../../atoms/SidebarDrawerMenu";
 import useTheme from "../../hooks/useTheme";
 
-// Dados de exemplo para os menus
 const menuItems = [
   {
     id: "1",

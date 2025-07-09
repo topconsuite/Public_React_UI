@@ -4,7 +4,11 @@ interface SidebarMenuIdentifierProps {
   identifierColor: string;
 }
 
-const Container = styled.div`
+interface SidebarMenuContainerProps {
+  active?: boolean;
+}
+
+const Container = styled.div<SidebarMenuContainerProps>`
   position: relative;
   user-select: none;
 
@@ -12,7 +16,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 70%;
+  opacity: ${(props) => (props.active ? "100%" : "70%")};
   padding: 15px;
 
   > :first-child {
@@ -26,9 +30,45 @@ const Container = styled.div`
     }
   }
 
+  ${(props) => props.active && `
+    svg {
+      fill: white !important;
+      color: white !important;
+      
+      path {
+        fill: white !important;
+      }
+      
+      circle {
+        fill: white !important;
+      }
+      
+      rect {
+        fill: white !important;
+      }
+    }
+  `}
+
   :hover {
     opacity: 100%;
     cursor: pointer;
+    
+    svg {
+      fill: white !important;
+      color: white !important;
+      
+      path {
+        fill: white !important;
+      }
+      
+      circle {
+        fill: white !important;
+      }
+      
+      rect {
+        fill: white !important;
+      }
+    }
   }
 `;
 
@@ -39,7 +79,10 @@ const Identifier = styled.i<SidebarMenuIdentifierProps>`
   height: 80%;
   border-radius: 50px;
   background-color: ${(props) => props.identifierColor};
-  display: none;
+
+  :hover {
+      background-color: red !important;
+  }
 `;
 
 export { Container, Identifier };

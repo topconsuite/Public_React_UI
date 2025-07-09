@@ -3,7 +3,8 @@ import React from "react";
 import Span from "@atoms/Span";
 import { Handyman, TimerOutlined } from "@mui/icons-material";
 import { Tooltip, Typography } from "@mui/material";
-import { useTheme } from "@/hooks";
+import { useTheme, useTranslation } from "@/hooks";
+import { KanbanMessages } from "@/index";
 import KanbanSectionIcon from "../KanbanSectionIcon";
 
 import * as Styled from "./styles";
@@ -40,8 +41,8 @@ const KanbanCardSummary: React.FC<KanbanCardSummaryProps> = ({
   concreteProduction = "0m³"
 }) => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
-  // Tempo de delay para tooltips em dispositivos touch (em milissegundos)
   const TOOLTIP_LEAVE_TOUCH_DELAY = 2000;
   const getTimeIconColor = (minutes: number) => {
     if (minutes <= 10) return theme.colors.success;
@@ -89,9 +90,28 @@ const KanbanCardSummary: React.FC<KanbanCardSummaryProps> = ({
       <Styled.Infos>
         <Span id="title1">{title1}</Span>
         {title2 && <Span id="title2">{title2}</Span>}
-        <Span>{description1}</Span>
-        {description2 && <Span>{description2}</Span>}
-        {description3 && <Span>{description3}</Span>}
+        <Span>
+          {t(KanbanMessages.state)}
+          :
+          {" "}
+          {description1}
+        </Span>
+        {description2 && (
+        <Span>
+          {t(KanbanMessages.city)}
+          :
+          {" "}
+          {description2}
+        </Span>
+        )}
+        {description3 && (
+        <Span>
+          {t(KanbanMessages.address)}
+          :
+          {" "}
+          {description3}
+        </Span>
+        )}
         {description4 && <Span>{description4}</Span>}
       </Styled.Infos>
       <div
@@ -146,19 +166,6 @@ const KanbanCardSummary: React.FC<KanbanCardSummaryProps> = ({
       </div>
     </Styled.Container>
   );
-};
-
-KanbanCardSummary.defaultProps = {
-  title2: "",
-  iconPath: undefined,
-  description2: "",
-  description3: "",
-  description4: "",
-  timeInStatusMinutes: 15,
-  maintenanceDaysLeft: null,
-  timeInStatusText: "Tempo no status",
-  maintenanceText: "Próxima manutenção em",
-  concreteProduction: "0m³"
 };
 
 export default KanbanCardSummary;
