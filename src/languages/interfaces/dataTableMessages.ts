@@ -5,6 +5,7 @@ export enum DataTableMessages {
   buttonsExport = "buttons.export",
   buttonsPrint = "buttons.print",
   buttonsRefresh = "buttons.reload",
+  buttonsSave = "buttons.save",
   buttonsViewRoles = "buttons.viewRoles",
   emptyTable = "dataTable.emptyTable",
   info = "dataTable.info",

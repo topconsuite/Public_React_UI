@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
 import Span from "@atoms/Span";
 import { Handyman, TimerOutlined } from "@mui/icons-material";
@@ -23,6 +23,7 @@ export interface KanbanCardSummaryProps {
   timeInStatusText?: string;
   maintenanceText?: string;
   concreteProduction?: string;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 const KanbanCardSummary: React.FC<KanbanCardSummaryProps> = ({
@@ -38,7 +39,8 @@ const KanbanCardSummary: React.FC<KanbanCardSummaryProps> = ({
   maintenanceDaysLeft = null,
   timeInStatusText = "Tempo no status",
   maintenanceText = "Próxima manutenção em",
-  concreteProduction = "0m³"
+  concreteProduction = "0m³",
+  onClick
 }) => {
   const { theme } = useTheme();
   const { t } = useTranslation();
@@ -85,7 +87,7 @@ const KanbanCardSummary: React.FC<KanbanCardSummaryProps> = ({
   };
 
   return (
-    <Styled.Container primarycolor={primarycolor}>
+    <Styled.Container primarycolor={primarycolor} onClick={onClick || undefined}>
       {iconPath && <KanbanSectionIcon iconPath={iconPath} />}
       <Styled.Infos>
         <Span id="title1">{title1}</Span>

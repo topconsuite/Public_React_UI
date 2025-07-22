@@ -30,6 +30,14 @@ const config = {
       '@styles': path.resolve(__dirname, '../src/styles')
     };
     
+    // Adicionar polyfills para módulos Node.js
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      "buffer": require.resolve("buffer/"),
+      "stream": require.resolve("stream-browserify"),
+      "util": require.resolve("util/")
+    };
+    
     return config;
   }
 };

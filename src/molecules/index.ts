@@ -1,9 +1,11 @@
 import Sidebar from "./Sidebar";
 import SpeedDial from "./SpeedDial";
 import SidebarDrawer from "./SidebarDrawer";
-import MenuFleet from "./DrawerMenu";
 import SidebarDrawerMenus from "./SidebarDrawerMenus";
 import SidebarDrawerSecondaryMenus from "./SidebarDrawerSecondaryMenus";
+import Navbar from "./Navbar";
+
+export { default as FormModal } from "./FormModal";
 
 export {
   Sidebar,
@@ -11,5 +13,5 @@ export {
   SidebarDrawer,
   SidebarDrawerMenus,
   SidebarDrawerSecondaryMenus,
-  MenuFleet
+  Navbar
 };

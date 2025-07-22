@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
 import KanbanCardSummary, { KanbanCardSummaryProps } from "../KanbanCardSummary";
 
@@ -8,7 +8,7 @@ export interface KanbanBasicCardProps {
   summaryProps: KanbanCardSummaryProps,
   status?: string,
   statusColor?: string,
-  onClick?: (() => void) | null,
+  onClick?: MouseEventHandler<HTMLDivElement>,
   id?: string
 }
 

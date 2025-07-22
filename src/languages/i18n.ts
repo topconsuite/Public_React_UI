@@ -5,6 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import ptBR from "./pt-BR";
 import enUS from "./en-US";
 import esES from "./es-ES";
+import { TranslationData } from "./languageData";
 
 const detectLanguage = (): string => {
   if (typeof window === "undefined" || !window.navigator) {
@@ -25,20 +26,27 @@ const detectLanguage = (): string => {
 };
 
 // Flatten the nested structure to match the enum keys
-const flattenTranslations = (data: Record<string, unknown>) => {
+const flattenTranslations = (data: TranslationData) => {
   const flattened: Record<string, unknown> = {};
 
   // Flatten dataTable messages
   if (data.dataTable) {
-    Object.keys(data.dataTable).forEach((key) => {
-      flattened[key] = data.dataTable[key];
+    Object.entries(data.dataTable).forEach(([key, value]) => {
+      flattened[key] = value;
     });
   }
 
   // Flatten kanban messages
   if (data.kanban) {
-    Object.keys(data.kanban).forEach((key) => {
-      flattened[key] = data.kanban[key];
+    Object.entries(data.kanban).forEach(([key, value]) => {
+      flattened[key] = value;
+    });
+  }
+
+  // Flatten global messages
+  if (data.global) {
+    Object.entries(data.global).forEach(([key, value]) => {
+      flattened[key] = value;
     });
   }
 

@@ -1,5 +1,5 @@
-import { TFunction, useTranslation as useI18nTranslation } from "react-i18next";
-import { i18n as I18n } from "i18next";
+import { useTranslation as useI18nTranslation } from "react-i18next";
+import { i18n as I18n, TFunction } from "i18next";
 
 interface UseTranslationReturn {
   t: TFunction;

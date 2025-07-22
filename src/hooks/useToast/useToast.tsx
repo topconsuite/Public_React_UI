@@ -24,7 +24,7 @@ interface ToastContextData {
 }
 
 const ToastContext = createContext({} as ToastContextData);
-const ToastProvider: React.FC = ({ children }) => {
+const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const [messages, setMessages] = useState<ToastMessage[]>([]);
 

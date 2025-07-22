@@ -22,7 +22,7 @@ import {
 import { Menu } from "@libraries/mui/icons";
 // endregion Libraries
 // region Molecules
-import MenuFleet from "@molecules/MenuFleet";
+import DrawerMenu from "@molecules/DrawerMenu";
 // endregion Molecules
 // region Organisms
 import NavbarIcons from "@organisms/NavbarIcons";
@@ -37,6 +37,31 @@ interface NavbarProps {
   productIconSrc?: string;
   productIconAlt?: string;
   showLogo?: boolean;
+  user?: {
+    name: string;
+    email: string;
+    admin: boolean;
+    super_admin: boolean;
+  };
+  menus?: Record<string, Array<{
+    id: string;
+    text: string;
+    icon: React.ReactNode;
+    link?: string;
+    component?: string;
+    isPrivate?: boolean;
+  }>>;
+  version?: string;
+  onSignOut?: () => void;
+  onHelpClick?: () => void;
+  navbarIconsProps?: {
+    onNotificationsClick?: () => void;
+    onAppsClick?: () => void;
+    onSettingsClick?: () => void;
+    onLogoutClick?: () => void;
+    showLanguageDropdown?: boolean;
+    customIcons?: React.ReactNode[];
+  };
 }
 // endregion Interfaces
 
@@ -45,7 +70,13 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({
   productIconSrc = TopconDispatchLogoAsset,
   productIconAlt = "Topcon Dispatch icon",
-  showLogo = true
+  showLogo = true,
+  user,
+  menus,
+  version,
+  onSignOut,
+  onHelpClick,
+  navbarIconsProps
 }) => {
 
   // region Hooks
@@ -63,15 +94,14 @@ const Navbar: React.FC<NavbarProps> = ({
     setOpenSidebar((value) => !value);
   }, []);
 
-  // Mock data seguindo a estrutura do MenuFleet.stories.tsx
-  const mockUser = {
+  const defaultUser = {
     name: "João Silva",
     email: "joao.silva@empresa.com",
     admin: true,
     super_admin: false
   };
 
-  const mockMenus = {
+  const defaultMenus = {
     "Principal": [
       {
         id: "dashboard",
@@ -129,35 +159,41 @@ const Navbar: React.FC<NavbarProps> = ({
     ]
   };
 
+  const currentUser = user || defaultUser;
+  const currentMenus = menus || defaultMenus;
+  const currentVersion = version || packageJson.version;
+  const handleSignOut = onSignOut || (() => {
+    // console.log("Sign out clicked");
+    setOpenSidebar(false);
+  });
+  const handleHelpClick = onHelpClick || (() => {
+    // console.log("Help clicked");
+  });
+
   // endregion Callbacks / Functions
 
   return (
     <Styled.Container>
       <Menu onClick={toggleOpenSidebar} />
-      <MenuFleet
+      <DrawerMenu
         open={openSidebar}
         onClose={toggleOpenSidebar}
-        user={mockUser}
-        menus={mockMenus}
-        version={packageJson.version}
-        onSignOut={() => {
-          // console.log("Sign out clicked");
-          setOpenSidebar(false);
-        }}
-        onHelpClick={() => {
-          // console.log("Help clicked");
-        }}
+        user={currentUser}
+        menus={currentMenus}
+        version={currentVersion}
+        onSignOut={handleSignOut}
+        onHelpClick={handleHelpClick}
       />
       {showLogo && (
         <Styled.Product>
           <Styled.ProductIcon src={productIconSrc} alt={productIconAlt} />
           <Styled.Version>
             v
-            {packageJson.version}
+            {currentVersion}
           </Styled.Version>
         </Styled.Product>
       )}
-      <NavbarIcons />
+      <NavbarIcons {...navbarIconsProps} />
 
     </Styled.Container>
   );

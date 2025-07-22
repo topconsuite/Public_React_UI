@@ -7,6 +7,7 @@ type ContainerProps = {
   use: string;
   filters?: boolean;
   editColumns?: boolean;
+  buttonsCount?: number;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -36,7 +37,6 @@ export const Container = styled.div<ContainerProps>`
       width: 20px;
       height: 20px;
       border-radius: 50%;
-
       display: flex;
       align-content: center;
       justify-content: center;
@@ -307,7 +307,8 @@ export const Container = styled.div<ContainerProps>`
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);
     vertical-align: middle;
     position: relative;
-    top: -1px;
+    top: 3px;
+    left: -12px;
     flex-shrink: 0;
   }
 

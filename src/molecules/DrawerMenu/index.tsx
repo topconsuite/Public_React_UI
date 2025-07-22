@@ -9,7 +9,8 @@ import {
 import {
   ArrowBack as ArrowBackIcon,
   Help as HelpIcon,
-  ExitToApp as ExitToAppIcon
+  ExitToApp as ExitToAppIcon,
+  AccountCircle
 } from "@mui/icons-material";
 import { ReactSVG } from "react-svg";
 import { TopconCustomerLogoAsset } from "@/assets/company";
@@ -48,14 +49,13 @@ interface MenuFleetProps {
   onHelpClick?: () => void;
   onSignOut?: () => void;
   userPhotoSrc?: string;
+  onMenuItemClick?: (menu: MenuItem) => void;
+  currentPath?: string; // Rota atual para determinar item ativo
 }
 
 // Mock assets
 const DefaultLogo = TopconCustomerLogoAsset;
-const DefaultUserPhoto = "data:image/svg+xml;base64,"
-  + "PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4"
-  + "PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNmNWY1ZjUiLz48Y2lyY2xlIGN4PSIyMCIgY3k9IjE2IiByPSI2IiBmaWxsPSIjOWU5ZTllIi8+"
-  + "PHBhdGggZD0iTTEwIDMyYzAtNiA0LTEwIDEwLTEwczEwIDQgMTAgMTAiIGZpbGw9IiM5ZTllOWUiLz48L3N2Zz5nPT0";
+const DefaultUserPhoto = "https://thumbs.dreamstime.com/b/vetor-de-%C3%ADcone-perfil-do-avatar-padr%C3%A3o-foto-usu%C3%A1rio-m%C3%ADdia-social-183042379.jpg?w=768";
 
 // Mock permission functions
 const userHasPermissionInMenu = () => true;
@@ -70,7 +70,9 @@ const MenuFleet: React.FC<MenuFleetProps> = ({
   version = "1.0.0",
   onHelpClick,
   onSignOut,
-  userPhotoSrc = DefaultUserPhoto
+  userPhotoSrc = DefaultUserPhoto,
+  onMenuItemClick,
+  currentPath
 }) => {
   const [, setOpenModalIconLegend] = useState(false);
   const [, setOpenContactUs] = useState(false);
@@ -81,6 +83,12 @@ const MenuFleet: React.FC<MenuFleetProps> = ({
   };
 
   const handleMenuItemClick = (menu: MenuItem) => {
+    // Chama o callback externo se fornecido
+    if (onMenuItemClick) {
+      onMenuItemClick(menu);
+    }
+
+    // Lógica interna do componente
     if (menu.component === "modalContactUs") {
       setOpenContactUs(true);
     } else if (menu.component === "installPWA") {
@@ -122,7 +130,6 @@ const MenuFleet: React.FC<MenuFleetProps> = ({
             <Styled.Version>
               V.
               {version}
-              x
             </Styled.Version>
           </Styled.Logo>
         </Styled.Header>
@@ -146,7 +153,7 @@ const MenuFleet: React.FC<MenuFleetProps> = ({
 
         <Styled.Profile>
           <Styled.Photo>
-            <img src={userPhotoSrc} alt="User" />
+            {userPhotoSrc ? <img src={userPhotoSrc} alt="User" /> : <AccountCircle style={{ fontSize: "78px" }} />}
           </Styled.Photo>
           <Styled.Data>
             <Styled.Name>{user.name}</Styled.Name>
@@ -161,13 +168,16 @@ const MenuFleet: React.FC<MenuFleetProps> = ({
             {verifyIfShowMenuBlock(menus[key]) && (
               <Styled.MenuBox className={`item-menu-${key.toLowerCase()}`}>
                 <Styled.MenuTitle>{key}</Styled.MenuTitle>
-                {menus[key].map((menu) => (
-                  userHasPermissionInMenu() && (
+                {menus[key].map((menu) => {
+                  // Determina se o item está ativo baseado na rota atual
+                  const isActive = currentPath ? menu.link === currentPath : false;
+
+                  return userHasPermissionInMenu() && (
                     <div key={menu.id}>
                       {(!menu.isPrivate
                         || ((menu.isPrivate && !menu.isSuperPrivate) && user.admin)
                         || (menu.isSuperPrivate && user.super_admin)) && (
-                          <Styled.MenuContent>
+                          <Styled.MenuContent isActive={isActive}>
                             <List>
                               <ListItem
                                 button
@@ -183,8 +193,8 @@ const MenuFleet: React.FC<MenuFleetProps> = ({
                           </Styled.MenuContent>
                       )}
                     </div>
-                  )
-                ))}
+                  );
+                })}
                 <Divider />
               </Styled.MenuBox>
             )}
@@ -220,7 +230,8 @@ MenuFleet.defaultProps = {
   version: "1.0.0",
   onHelpClick: undefined,
   onSignOut: undefined,
-  userPhotoSrc: DefaultUserPhoto
+  userPhotoSrc: DefaultUserPhoto,
+  currentPath: undefined
 };
 
 export default MenuFleet;

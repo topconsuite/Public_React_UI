@@ -38,7 +38,7 @@ const SidebarDrawerMenu: React.FC<SidebarDrawerMenuProps> = ({
       type={type}
     >
       <ReactSVG
-        src={iconTypes[icon as keyof typeof iconTypes]}
+        src={iconTypes[icon as keyof typeof iconTypes] as string}
         alt="menu Icon"
         loading={() => <Skeleton variant="rectangular" animation="wave" width={20} height={20} />}
         beforeInjection={(svg) => {

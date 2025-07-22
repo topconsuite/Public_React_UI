@@ -1,3 +1,2 @@
-import { useField, FormHandles } from "@unform/core";
-
-export { useField, FormHandles };
+export { useField } from "@unform/core";
+export { Form } from "@unform/web";

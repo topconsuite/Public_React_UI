@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-interface SidebarMenuIdentifierProps {
-  identifierColor: string;
-}
-
 interface SidebarMenuContainerProps {
   active?: boolean;
 }
@@ -72,13 +68,13 @@ const Container = styled.div<SidebarMenuContainerProps>`
   }
 `;
 
-const Identifier = styled.i<SidebarMenuIdentifierProps>`
+const Identifier = styled.i`
   position: absolute;
   left: 0px;
   width: 6px;
   height: 80%;
   border-radius: 50px;
-  background-color: ${(props) => props.identifierColor};
+  background-color: #ff9900;
 
   :hover {
       background-color: red !important;

@@ -1,39 +1,73 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import React from "react";
-import SidebarMenu from "@atoms/SidebarMenu";
 import NewDataTable from "@molecules/NewDataTable";
+import {
+  Dashboard as DashboardIcon,
+  People as PeopleIcon,
+  Settings as SettingsIcon,
+  Assessment as AssessmentIcon,
+  Phone as PhoneIcon,
+  GetApp as GetAppIcon
+} from "@mui/icons-material";
 import Layout from "./index";
 
-// Custom sidebar content for stories
-const CustomSidebarContent = (
-  <>
-    <SidebarMenu
-      id="menu-home"
-      title="Home"
-      icon="ConcreteAsset"
-      identifierColor="#ff9900"
-      active
-    />
-    <SidebarMenu
-      id="menu-analytics"
-      title="Analytics"
-      icon="SettingsAsset"
-      identifierColor="#b3bfcb"
-    />
-    <SidebarMenu
-      id="menu-projects"
-      title="Projects"
-      icon="EditAsset"
-      identifierColor="#b3bfcb"
-    />
-    <SidebarMenu
-      id="menu-team"
-      title="Team"
-      icon="LogoutAsset"
-      identifierColor="#b3bfcb"
-    />
-  </>
-);
+const mockUser = {
+  name: "João Silva",
+  email: "joao.silva@empresa.com",
+  admin: true,
+  super_admin: false
+};
+
+const mockMenus = {
+  "Principal": [
+    {
+      id: "dashboard",
+      text: "Dashboard",
+      icon: <DashboardIcon />,
+      iconName: "ConcreteAsset",
+      link: "/dashboard"
+    },
+    {
+      id: "users",
+      text: "Usuários",
+      icon: <PeopleIcon />,
+      iconName: "SettingsAsset",
+      link: "/users",
+      isPrivate: true
+    }
+  ],
+  "Configurações": [
+    {
+      id: "settings",
+      text: "Configurações",
+      icon: <SettingsIcon />,
+      iconName: "EditAsset",
+      link: "/settings"
+    },
+    {
+      id: "reports",
+      text: "Relatórios",
+      icon: <AssessmentIcon />,
+      iconName: "LogoutAsset",
+      link: "/reports"
+    }
+  ],
+  "Suporte": [
+    {
+      id: "contact",
+      text: "Fale Conosco",
+      icon: <PhoneIcon />,
+      iconName: "ConcreteAsset",
+      component: "modalContactUs"
+    },
+    {
+      id: "install",
+      text: "Instalar App",
+      icon: <GetAppIcon />,
+      iconName: "SettingsAsset",
+      component: "installPWA"
+    }
+  ]
+};
 
 const meta: Meta<typeof Layout> = {
   title: "Organisms/Layout",
@@ -64,6 +98,14 @@ const meta: Meta<typeof Layout> = {
     navbarProps: {
       control: "object",
       description: "Propriedades adicionais para o componente Navbar"
+    },
+    menus: {
+      control: "object",
+      description: "Estrutura de menus unificada para Sidebar e DrawerMenu"
+    },
+    onMenuItemClick: {
+      action: "menuItemClicked",
+      description: "Callback chamado quando um item do menu é clicado"
     }
   }
 };
@@ -75,7 +117,44 @@ export const Default: Story = {
   args: {
     primaryColor: "#002951",
     showLogo: true,
-    hideSidebarOnMobile: true
+    hideSidebarOnMobile: true,
+    menus: mockMenus,
+    onMenuItemClick: () => {
+      // Menu item clicked
+    }
+  }
+};
+
+export const WithUnifiedMenus: Story = {
+  args: {
+    primaryColor: "#002951",
+    showLogo: true,
+    hideSidebarOnMobile: true,
+    menus: mockMenus,
+    onMenuItemClick: () => {
+      // Menu item clicked
+      // Clicou em: menu.text
+    },
+    navbarProps: {
+      user: mockUser,
+      version: "2.1.0",
+      userPhotoSrc: "https://thumbs.dreamstime.com/b/vetor-de-%C3%ADcone-perfil-do-avatar-padr%C3%A3o-foto-usu%C3%A1rio-m%C3%ADdia-social-183042379.jpg?w=768",
+      onSignOut: () => {
+        // Sign out clicked
+        // Logout realizado!
+      },
+      onHelpClick: () => {
+        // Help clicked
+        // Ajuda solicitada!
+      }
+    }
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Layout com menus unificados que são compartilhados entre o Sidebar (desktop) e o DrawerMenu (mobile). Os mesmos dados de menu são utilizados em ambos os componentes, garantindo consistência na navegação."
+      }
+    }
   }
 };
 
@@ -313,13 +392,21 @@ export const WithDataTableGrid: Story = {
     primaryColor: "#002951",
     showLogo: true,
     hideSidebarOnMobile: true,
-    sidebarContent: CustomSidebarContent,
+    menus: mockMenus,
+    onMenuItemClick: () => {
+      // Menu item clicked
+    },
+    navbarProps: {
+      user: mockUser,
+      version: "2.1.0",
+      userPhotoSrc: "https://thumbs.dreamstime.com/b/vetor-de-%C3%ADcone-perfil-do-avatar-padr%C3%A3o-foto-usu%C3%A1rio-m%C3%ADdia-social-183042379.jpg?w=768"
+    },
     children: <DataTableContent />
   },
   parameters: {
     docs: {
       description: {
-        story: "Layout integrado com o componente NewDataTable, demonstrando como utilizar o grid de dados dentro do layout principal da aplicação."
+        story: "Layout integrado com o componente NewDataTable e menus unificados, demonstrando como utilizar o grid de dados dentro do layout principal da aplicação com navegação consistente."
       }
     }
   }

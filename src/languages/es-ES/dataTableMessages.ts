@@ -7,6 +7,7 @@ export const messages: TranslationDataTableMessages = {
   [DataTableMessages.buttonsExport]: "Exportar",
   [DataTableMessages.buttonsPrint]: "Imprimir",
   [DataTableMessages.buttonsRefresh]: "Actualizar",
+  [DataTableMessages.buttonsSave]: "Guardar",
   [DataTableMessages.buttonsViewRoles]: "Ver Roles",
   [DataTableMessages.emptyTable]: "No hay datos disponibles en la tabla",
   [DataTableMessages.info]: "Mostrando _START_ a _END_ de _TOTAL_ registros",

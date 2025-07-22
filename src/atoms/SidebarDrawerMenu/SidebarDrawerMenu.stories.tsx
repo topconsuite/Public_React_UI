@@ -31,7 +31,11 @@ const meta: Meta<typeof SidebarDrawerMenu> = {
       control: "text",
       description: "Título do menu"
     },
-    icon: iconOptions,
+    icon: {
+      control: { type: "select" },
+      options: iconOptions.options,
+      description: iconOptions.description
+    },
     identifierColor: {
       control: "color",
       description: "Cor do identificador (apenas para tipo primary)"

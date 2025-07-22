@@ -55,8 +55,12 @@ export const WithinAccordionCard: Story = {
     const WithinAccordionCardComponent = () => (
       <Box sx={{ width: 500, p: 2 }}>
         <AccordionCard
-          title="Ações do Kanban"
-          subtitle="Clique para expandir e ver as ações disponíveis"
+          accordionSummary={(
+            <Box>
+              <div style={{ fontWeight: "bold" }}>Ações do Kanban</div>
+              <div style={{ fontSize: "0.875rem", color: "gray" }}>Clique para expandir e ver as ações disponíveis</div>
+            </Box>
+          )}
           expanded
           showExpandIcon
         >

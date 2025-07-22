@@ -1,4 +1,12 @@
-const w = window;
+interface ZohoInterceptObject {
+  p: unknown[];
+}
+
+type WindowWithZoho = Window & {
+  [key: string]: ZohoInterceptObject | ((...args: unknown[]) => void) | unknown;
+};
+
+const w = window as unknown as WindowWithZoho;
 const zsBaseUrl = "https://survey.zohopublic.com";
 const zsInterceptKey = "zs_intercept";
 
@@ -7,7 +15,15 @@ export interface ISurveyAdditionalInfo {
 }
 
 const zsIntercept = (...args: unknown[]) => {
-  (w[zsInterceptKey].p = w[zsInterceptKey].p || []).push(args);
+  if (!w[zsInterceptKey]) {
+    w[zsInterceptKey] = { p: [] };
+  }
+  const interceptObj = w[zsInterceptKey] as ZohoInterceptObject;
+
+  if (!interceptObj.p) {
+    interceptObj.p = [];
+  }
+  interceptObj.p.push(args);
 };
 
 export const openZohoSurvey = (surveyId: string, email: string, additionalInfo?: ISurveyAdditionalInfo): void => {

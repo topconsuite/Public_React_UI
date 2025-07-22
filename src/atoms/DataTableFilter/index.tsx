@@ -27,10 +27,6 @@ import {
 import useTranslation from "../../hooks/useTranslation";
 import { DataTableMessages } from "../../languages/interfaces/dataTableMessages";
 
-const GlobalMessages = {
-  save: "save"
-};
-
 /** Enums */
 enum EFilterOperatorsType {
   EQUAL = "equal",
@@ -135,6 +131,8 @@ const DataTableFilter: React.FC<IProps<unknown>> = ({
       return;
     }
 
+    const newIndex = filterFields.length;
+
     setFilterFields((prevState) => [
       ...prevState, {
         value: "",
@@ -143,7 +141,13 @@ const DataTableFilter: React.FC<IProps<unknown>> = ({
       }
     ]);
 
-  }, [addToast, filterFields, setFilterFields, filterProperties, t]);
+    // Set the new accordion as expanded
+    setStateAccordion((prevState) => ({
+      ...prevState,
+      [`filter-field-${newIndex}`]: true
+    }));
+
+  }, [addToast, filterFields, setFilterFields, filterProperties, t, setStateAccordion]);
 
   /** Update existing filter field (With data) */
   const handleSubmitFormField = useCallback((event, index) => {
@@ -183,7 +187,15 @@ const DataTableFilter: React.FC<IProps<unknown>> = ({
       return _field;
     }));
 
-  }, [addToast, filterProperties, stateOperators, setFilterFields]);
+    // Collapse the accordion after saving with setTimeout to ensure state update
+    setTimeout(() => {
+      setStateAccordion((prevState) => ({
+        ...prevState,
+        [`filter-field-${index}`]: false
+      }));
+    }, 0);
+
+  }, [addToast, filterProperties, stateOperators, setFilterFields, setStateAccordion]);
 
   /** Filter data */
   const handleFilter = useCallback(() => {
@@ -192,7 +204,7 @@ const DataTableFilter: React.FC<IProps<unknown>> = ({
 
       if (_.isEmpty(filterField)) return true;
 
-      const fieldValue = filterField.propName.split(".").reduce((obj, key) => obj[key] ?? "", data);
+      const fieldValue = filterField.propName.split(".").reduce((obj, key) => (obj as Record<string, unknown>)[key] ?? "", data);
       const { operator, value, toFilterValue } = filterField;
 
       if (!operator || !value) return true;
@@ -206,23 +218,23 @@ const DataTableFilter: React.FC<IProps<unknown>> = ({
       switch (operator.propName) {
 
         case EFilterOperatorsType.EQUAL:
-          return fieldValueToFilter === Number(value) ? Number(value) : value;
+          return fieldValueToFilter === (Number(value) ? Number(value) : value);
         case EFilterOperatorsType.NOT_EQUAL:
-          return fieldValueToFilter !== Number(value) ? Number(value) : value;
+          return fieldValueToFilter !== (Number(value) ? Number(value) : value);
         case EFilterOperatorsType.GREATER_THAN:
-          return fieldValueToFilter > Number(value) ? Number(value) : value;
+          return (fieldValueToFilter as number) > Number(value);
         case EFilterOperatorsType.GREATER_THAN_OR_EQUAL:
-          return fieldValueToFilter >= Number(value) ? Number(value) : value;
+          return (fieldValueToFilter as number) >= Number(value);
         case EFilterOperatorsType.LESS_THAN:
-          return fieldValueToFilter < Number(value) ? Number(value) : value;
+          return (fieldValueToFilter as number) < Number(value);
         case EFilterOperatorsType.LESS_THAN_OR_EQUAL:
-          return fieldValueToFilter <= Number(value) ? Number(value) : value;
+          return (fieldValueToFilter as number) <= Number(value);
         case EFilterOperatorsType.CONTAINS:
-          return fieldValueToFilter.toString().toLowerCase().includes(value.toString().toLowerCase());
+          return String(fieldValueToFilter).toLowerCase().includes(value.toString().toLowerCase());
         case EFilterOperatorsType.NOT_CONTAINS:
-          return !fieldValueToFilter.toString().toLowerCase().includes(value.toString().toLowerCase());
+          return !String(fieldValueToFilter).toLowerCase().includes(value.toString().toLowerCase());
         case EFilterOperatorsType.STARTS_WITH:
-          return fieldValueToFilter.toString().toLowerCase().startsWith(value.toString().toLowerCase());
+          return String(fieldValueToFilter).toLowerCase().startsWith(value.toString().toLowerCase());
 
         default:
           return true;
@@ -329,7 +341,7 @@ const DataTableFilter: React.FC<IProps<unknown>> = ({
                       />
                       <Button
                         disableRipple
-                        text={t(GlobalMessages.save)}
+                        text={t(DataTableMessages.buttonsSave)}
                         type="submit"
                         className="default-submit-button"
                       />

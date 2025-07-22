@@ -23,7 +23,6 @@ export {
   KeyboardArrowRight,
   Language,
   Logout,
-  ManageHistory,
   Menu,
   MenuOpen,
   NavigateNext,

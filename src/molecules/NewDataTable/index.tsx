@@ -20,9 +20,7 @@ import "datatables.net-dt";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import "datatables.net-responsive-dt";
 import "datatables.net-responsive-dt/css/responsive.dataTables.min.css";
-import type {
-  Config, Api, ButtonsSettings, ColumnSettings
-} from "datatables.net";
+// DataTables types will be used from global namespace
 // endregion Data table libraries
 // region Atoms
 // import { DefaultTheme } from "styled-components";
@@ -52,8 +50,8 @@ export interface DataTableActions<T = unknown> {
 
 // endregion Interfaces
 // region Types
-export type DataTableButtons = ButtonsSettings & { key: string, name: string, callback?: () => void }
-export type DataTableColumns = ColumnSettings & {
+export type DataTableButtons = Partial<DataTables.ButtonsSettings> & { key: string, name: string, callback?: () => void }
+export type DataTableColumns = DataTables.ColumnSettings & {
   filterable: boolean,
   propertyName?: string,
   toFilterValue?: ((data: unknown) => number | string) | null,
@@ -62,7 +60,7 @@ export type DataTableColumns = ColumnSettings & {
 type DataTableProps = {
   data: unknown[],
   columns: DataTableColumns[],
-  settings?: Config,
+  settings?: DataTables.Settings,
   actions?: DataTableActions[],
   buttons?: DataTableButtons[],
   buttonsChildren?: React.ReactNode,
@@ -74,7 +72,7 @@ type DataTableProps = {
   showPaging?: boolean,
   showInfo?: boolean,
   showSearching?: boolean,
-  returnTable?: (table: Api) => void,
+  returnTable?: (table: DataTables.Api<unknown>) => void,
   returnClickedRow?: (clickedRow: JQuery<HTMLTableRowElement>) => void,
   onClickFilterButton?: () => void,
   numberOfFilteredOptions?: number
@@ -112,7 +110,7 @@ const NewDataTable: React.FC<DataTableProps> = ({
   const { t } = useTranslation();
   // endregion Hooks
   // region States
-  const [table, setTable] = useState<DataTables.Api>();
+  const [table, setTable] = useState<DataTables.Api<unknown>>();
   const [dataFiltered, setDataFiltered] = useState<unknown[]>([]);
   const [openSpeedDialActionMenus, setOpenSpeedDialActionMenus] = useState(false);
   const [openFilterFields, setOpenFilterFields] = useState(false);
@@ -235,7 +233,7 @@ const NewDataTable: React.FC<DataTableProps> = ({
         buttons: buttons ?? []
       };
 
-      const instanceTable = $(tableRef.current).DataTable({ ...tableSettings, ...settings });
+      const instanceTable = ($(tableRef.current!) as JQuery).DataTable({ ...tableSettings, ...settings });
 
       setTable(instanceTable);
       returnTable && returnTable(instanceTable);
@@ -275,7 +273,7 @@ const NewDataTable: React.FC<DataTableProps> = ({
         returnTable && returnTable(table);
 
         actions.forEach((action) => {
-          $(tableRef.current).on("click", `${action.ref}`, (event) => {
+          ($(tableRef.current!) as JQuery).on("click", `${action.ref}`, (event: JQuery.ClickEvent) => {
             if ($(event.currentTarget).parents("tr").hasClass("child")) {
               action.callback(table.row($(event.currentTarget).parents("tr").prev("tr")).data());
               returnClickedRow && returnClickedRow($(event.currentTarget).parents("tr").prev("tr"));
@@ -292,7 +290,9 @@ const NewDataTable: React.FC<DataTableProps> = ({
     table?.columns.adjust();
 
     return function cleanUp() {
-      $(ref).prop("onclick", null).off("click");
+      if (ref) {
+        ($(ref) as JQuery).prop("onclick", null).off("click");
+      }
     };
 
   },
@@ -302,10 +302,10 @@ const NewDataTable: React.FC<DataTableProps> = ({
 
   // Search input expand/collapse functionality
   useEffect(() => {
-    if (table && showSearching) {
-      const searchIcon = $(tableRef.current).closest(".dataTables_wrapper").find(".dataTables_filter svg");
-      const searchInput = $(tableRef.current).closest(".dataTables_wrapper").find(".dataTables_filter input");
-      const searchLabel = $(tableRef.current).closest(".dataTables_wrapper").find(".dataTables_filter label");
+    if (table && showSearching && tableRef.current) {
+      const searchIcon = ($(tableRef.current) as JQuery).closest(".dataTables_wrapper").find(".dataTables_filter svg");
+      const searchInput = ($(tableRef.current) as JQuery).closest(".dataTables_wrapper").find(".dataTables_filter input");
+      const searchLabel = ($(tableRef.current) as JQuery).closest(".dataTables_wrapper").find(".dataTables_filter label");
 
       let isExpanded = false;
 

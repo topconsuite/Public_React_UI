@@ -1,17 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Dashboard as DashboardIcon,
-  Settings as SettingsIcon,
-  People as PeopleIcon,
-  Assessment as AssessmentIcon,
-  Phone as PhoneIcon,
-  GetApp as GetAppIcon
+  People as PeopleIcon
 } from "@mui/icons-material";
 import { Button } from "@mui/material";
-import MenuFleet from "./index";
+import DrawerMenu from "./index";
 
-// Mock data
 const mockUser = {
   name: "João Silva",
   email: "joao.silva@empresa.com",
@@ -34,39 +29,38 @@ const mockMenus = {
       link: "/users",
       isPrivate: true
     }
-  ],
-  "Configurações": [
-    {
-      id: "settings",
-      text: "Configurações",
-      icon: <SettingsIcon />,
-      link: "/settings"
-    },
-    {
-      id: "reports",
-      text: "Relatórios",
-      icon: <AssessmentIcon />,
-      link: "/reports"
-    }
-  ],
-  "Suporte": [
-    {
-      id: "contact",
-      text: "Fale Conosco",
-      icon: <PhoneIcon />,
-      component: "modalContactUs"
-    },
-    {
-      id: "install",
-      text: "Instalar App",
-      icon: <GetAppIcon />,
-      component: "installPWA"
-    }
   ]
+  // "Configurações": [
+  //   {
+  //     id: "settings",
+  //     text: "Configurações",
+  //     icon: <SettingsIcon />,
+  //     link: "/settings"
+  //   },
+  //   {
+  //     id: "reports",
+  //     text: "Relatórios",
+  //     icon: <AssessmentIcon />,
+  //     link: "/reports"
+  //   }
+  // ],
+  // "Suporte": [
+  //   {
+  //     id: "contact",
+  //     text: "Fale Conosco",
+  //     icon: <PhoneIcon />,
+  //     component: "modalContactUs"
+  //   },
+  //   {
+  //     id: "install",
+  //     text: "Instalar App",
+  //     icon: <GetAppIcon />,
+  //     component: "installPWA"
+  //   }
+  // ]
 };
 
-// Wrapper component for stories
-const MenuFleetWrapper = (args: unknown) => {
+const DrawerMenuWrapper = (args: React.ComponentProps<typeof DrawerMenu>) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -79,16 +73,18 @@ const MenuFleetWrapper = (args: unknown) => {
         Abrir Menu Fleet
       </Button>
 
-      <MenuFleet
+      <DrawerMenu
         {...args}
         open={open}
         onClose={() => setOpen(false)}
         onSignOut={() => {
-          // console.log("Sign out clicked");
           setOpen(false);
         }}
         onHelpClick={() => {
-          // console.log("Help clicked");
+          // Help clicked
+        }}
+        onMenuItemClick={() => {
+          setOpen(false);
         }}
       />
 
@@ -114,9 +110,9 @@ const MenuFleetWrapper = (args: unknown) => {
   );
 };
 
-const meta: Meta<typeof MenuFleet> = {
+const meta: Meta<typeof DrawerMenu> = {
   title: "Molecules/DrawerMenu",
-  component: MenuFleet,
+  component: DrawerMenu,
   parameters: {
     layout: "fullscreen",
     docs: {
@@ -143,6 +139,18 @@ const meta: Meta<typeof MenuFleet> = {
     version: {
       control: "text",
       description: "Versão da aplicação"
+    },
+    userPhotoSrc: {
+      control: "text",
+      description: "URL da foto/avatar do usuário"
+    },
+    onMenuItemClick: {
+      action: "menuItemClicked",
+      description: "Callback chamado quando um item do menu é clicado"
+    },
+    currentPath: {
+      control: "text",
+      description: "Rota atual da aplicação para determinar qual item do menu está ativo"
     }
   }
 };
@@ -151,10 +159,63 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: MenuFleetWrapper,
+  render: DrawerMenuWrapper,
   args: {
     user: mockUser,
     menus: mockMenus,
-    version: "2.1.0"
+    version: "2.1.0",
+    currentPath: "/dashboard", // Simula que estamos na rota do dashboard
+    onHelpClick: () => {
+      // Help clicked
+    },
+    onMenuItemClick: () => {
+      // Menu item clicked
+    }
+  }
+};
+
+export const WithActiveUsers: Story = {
+  render: DrawerMenuWrapper,
+  args: {
+    user: mockUser,
+    menus: mockMenus,
+    version: "2.1.0",
+    currentPath: "/users", // Simula que estamos na rota de usuários
+    onHelpClick: () => {
+      // Help clicked
+    },
+    onMenuItemClick: () => {
+      // Menu item clicked
+    }
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Exemplo com o item 'Usuários' ativo, demonstrando o destaque visual com background cinza claro e borda laranja."
+      }
+    }
+  }
+};
+
+export const NoActiveItem: Story = {
+  render: DrawerMenuWrapper,
+  args: {
+    user: mockUser,
+    menus: mockMenus,
+    version: "2.1.0",
+    currentPath: "/other-route", // Rota que não corresponde a nenhum item
+    onHelpClick: () => {
+      // Help clicked
+    },
+    onMenuItemClick: () => {
+      // Menu item clicked
+    }
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Exemplo sem nenhum item ativo, demonstrando o estado padrão dos itens do menu."
+      }
+    }
   }
 };

@@ -1,15 +1,15 @@
-import { Box } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 import { styled } from "../../libraries/mui/components";
-import Button from "../Button";
+import Button, { ButtonProps } from "../Button";
 
-export const Container = styled(Box)`
+export const Container = styled(Box)<BoxProps>`
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 16px;
 `;
 
-export const ActionButton = styled(Button)`
+export const ActionButton = styled(Button)<ButtonProps>`
   // justify-content: flex-start;
   text-transform: none;
   color: #002951;

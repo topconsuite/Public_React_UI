@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Meta, StoryObj, StoryFn } from "@storybook/react-webpack5";
+import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Typography, Box, Chip } from "@mui/material";
 import { DashboardAsset } from "@assets/applications";
 import { Provider } from "jotai";
@@ -78,7 +78,7 @@ export default meta;
 
 type Story = StoryObj<typeof KanbanAccordionCard>;
 
-const Template = ({ onChange, ...args }: StoryFn<typeof KanbanAccordionCard>) => {
+const Template = ({ onChange, ...args }: React.ComponentProps<typeof KanbanAccordionCard> & { onChange?: (isExpanded: boolean) => void }) => {
   const [expanded, setExpanded] = useState(true);
 
   const handleChange = (isExpanded: boolean) => {

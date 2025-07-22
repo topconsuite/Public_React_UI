@@ -8,10 +8,12 @@ export { DataTableMessages } from "./languages/interfaces/dataTableMessages";
 export { KanbanMessages } from "./languages/interfaces/kanbanMessages";
 export { SurveyPlatform } from "./store/global.enum";
 export { ISurveyAdditionalInfo } from "./atoms/Survey/ZohoSurveyScript";
-export { Sidebar, SpeedDial, SidebarDrawer } from "./molecules";
+export {
+  Sidebar, SpeedDial, SidebarDrawer, Navbar, FormModal
+} from "./molecules";
+export { Layout } from "./organisms";
 export {
   TextField,
-  FloatActionButton,
   SpeedDialMenu,
   SidebarMenu,
   SidebarMenuProps,

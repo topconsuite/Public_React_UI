@@ -109,11 +109,10 @@ export const Profile = styled.div`
 `;
 
 export const Photo = styled.div`
-  background: white;
-  border-radius: 50%;
-  
   img {
+    height: 70px;
     width: 70px;
+    border-radius: 100%;
   }
 `;
 
@@ -150,7 +149,29 @@ export const MenuTitle = styled.div`
   font-family: 'Roboto', sans-serif;
 `;
 
-export const MenuContent = styled.div`
+interface MenuContentProps {
+  isActive?: boolean;
+}
+
+export const MenuContent = styled.div<MenuContentProps>`
+  position: relative;
+  
+  ${(props) => props.isActive && `
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #ff9900;
+      border-radius: 0 4px 4px 0;
+    }
+  `}
+  
   .MuiList-root {
     padding-bottom: 0;
     padding-top: 0;
