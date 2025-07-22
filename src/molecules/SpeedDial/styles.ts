@@ -38,4 +38,41 @@ const SpeedDialMenus = styled.div`
 
 `;
 
+export const SpeedDialButton = styled.button<{
+  primaryColor: string;
+  secondColor: string;
+  size?: "small" | "medium" | "large";
+  open: boolean;
+}>`
+  position: relative;
+  z-index: 1001;
+  width: ${({ size }) => {
+    if (size === "small") return "40px";
+    if (size === "large") return "64px";
+
+    return "56px";
+  }};
+  height: ${({ size }) => {
+    if (size === "small") return "40px";
+    if (size === "large") return "64px";
+
+    return "56px";
+  }};
+  border-radius: 50%;
+  border: none;
+  background-color: ${({ primaryColor }) => primaryColor};
+  color: ${({ secondColor }) => secondColor};
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0deg)")};
+  
+  &:hover {
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,0.2), 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12);
+  }
+`;
+
 export { SpeedDialContainer, SpeedDialMenus, SpeedDialModalArea };

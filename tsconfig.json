@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "target": "es2017",
     "lib": [
@@ -19,7 +20,6 @@
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -37,6 +37,12 @@
     "node_modules",
     "dist",
     "example",
-    "rollup.config.js"
+    "rollup.config.js",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.spec.ts",
+    "**/*.stories.tsx",
+    "**/*.stories.ts"
   ]
 }

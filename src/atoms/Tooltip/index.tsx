@@ -36,6 +36,7 @@ const BootstrapTooltip = styled(({ className, ...props }: TooltipPropsMui) => (
 interface TooltipProps {
   title: string,
   position: TooltipPosition;
+  children: React.ReactElement;
 }
 
 const Tooltip: React.FC<TooltipProps> = ({ title, position, children }) => (

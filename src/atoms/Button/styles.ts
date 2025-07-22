@@ -54,6 +54,7 @@ const Container = styled(LoadingButton)<ContainerProps>`
 
 const Text = styled.span`
   width: 150px !important;
+  font-family: 'Roboto', sans-serif;
 `;
 
 export { Container, Text };

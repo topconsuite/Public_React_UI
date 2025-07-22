@@ -42,7 +42,7 @@ const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
 
   useEffect(() => {
     setSidebarDrawer({ onClose });
-  }, [onClose]);
+  }, [onClose, setSidebarDrawer]);
 
   return (
     <SidebarDrawerContainer anchor={anchor} open={open} onClose={sidebarDrawer.onClose}>

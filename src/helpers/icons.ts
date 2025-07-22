@@ -1,0 +1,118 @@
+import {
+  CaretRight,
+  EditAsset,
+  LogoutAsset,
+  SettingsAsset,
+  DeleteAsset,
+  FilterActiveAsset,
+  FilterInactiveAsset,
+  FilterBlockedAsset,
+  FilterAllAsset,
+  FilterAllYellowAsset,
+  FilterInactiveYellowAsset,
+  ReservationStatusAsset,
+  ReservationStatusAssetBlack,
+  ConcreteAsset,
+  ConcreteMixerAsset,
+  ConcreteMixerWithCircleAsset,
+  ExpressAsset,
+  MortarAsset,
+  PumpAsset,
+  PumpWithCircleAsset,
+  ScheduleStatusAsset,
+  ScheduleStatusAssetBlack,
+  WeightAsset,
+  WeightGanttAsset,
+  WeightGanttWhiteAsset,
+  ClockGanttAsset,
+  AtDestinationAsset,
+  AtTheConstructionSiteAsset,
+  AtTheConstructionSiteWhiteAsset,
+  AtThePlantAsset,
+  InTrustedLocationAsset,
+  LoadingAsset,
+  OnTheWayAsset,
+  ReturningAsset,
+  UnloadingAsset,
+  ReprovedStatusAsset,
+  CanceledStatusAsset,
+  AwaitingStatusAsset,
+  DeliveryRouteAsset,
+  ExpeditionAsset,
+  AutomationStatusAsset,
+  WeighingStatusAsset,
+  InvoiceStatusAsset,
+  CompletedStatusAsset,
+  LoadingPointAsset,
+  DisplayStatusDrawerAsset,
+  PreparingStatusAsset,
+  InvoiceAndPreparingAsset
+} from "@/assets/icons";
+
+/**
+ * Mapeamento de ícones disponíveis para uso em componentes
+ * Pode ser usado com o controle de tipo "select" no Storybook
+ */
+const iconTypes = {
+  CaretRight,
+  EditAsset,
+  LogoutAsset,
+  SettingsAsset,
+  DeleteAsset,
+  FilterActiveAsset,
+  FilterInactiveAsset,
+  FilterBlockedAsset,
+  FilterAllAsset,
+  FilterAllYellowAsset,
+  FilterInactiveYellowAsset,
+  ReservationStatusAsset,
+  ReservationStatusAssetBlack,
+  ConcreteAsset,
+  ConcreteMixerAsset,
+  ConcreteMixerWithCircleAsset,
+  ExpressAsset,
+  MortarAsset,
+  PumpAsset,
+  PumpWithCircleAsset,
+  ScheduleStatusAsset,
+  ScheduleStatusAssetBlack,
+  WeightAsset,
+  WeightGanttAsset,
+  WeightGanttWhiteAsset,
+  ClockGanttAsset,
+  AtDestinationAsset,
+  AtTheConstructionSiteAsset,
+  AtTheConstructionSiteWhiteAsset,
+  AtThePlantAsset,
+  InTrustedLocationAsset,
+  LoadingAsset,
+  OnTheWayAsset,
+  ReturningAsset,
+  UnloadingAsset,
+  ReprovedStatusAsset,
+  CanceledStatusAsset,
+  AwaitingStatusAsset,
+  DeliveryRouteAsset,
+  ExpeditionAsset,
+  AutomationStatusAsset,
+  WeighingStatusAsset,
+  InvoiceStatusAsset,
+  CompletedStatusAsset,
+  LoadingPointAsset,
+  DisplayStatusDrawerAsset,
+  PreparingStatusAsset,
+  InvoiceAndPreparingAsset
+};
+
+/**
+ * Função auxiliar para uso com o Storybook
+ * Configura o argType para o campo de ícone
+ */
+export const iconOptions = {
+  control: "select",
+  options: Object.keys(iconTypes),
+  description: "Ícone SVG"
+};
+
+export { iconTypes };
+export default iconOptions;

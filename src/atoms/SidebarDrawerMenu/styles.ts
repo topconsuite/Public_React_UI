@@ -46,6 +46,7 @@ const Title = styled.div`
   font-size: 0.9rem;
   letter-spacing: 0;
   padding-left: 15px;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const Identifier = styled.i<IdentifierProps>`

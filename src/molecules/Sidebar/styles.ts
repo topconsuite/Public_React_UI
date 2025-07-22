@@ -24,13 +24,12 @@ const Container = styled.nav<SidebarStyleProps>`
 
   width: 55px;
   min-width: 55px;
-  height: 100%;
+  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 6px;
-  padding-bottom: 16px;
+  justify-content: flex-start;
   transition: all 0.5s;
   border-top-right-radius: 10px;
   overflow: auto;
@@ -46,10 +45,14 @@ const Container = styled.nav<SidebarStyleProps>`
 `;
 
 const Menus = styled.div`
-  flex-grow: 1;
+  flex: 1;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   padding-bottom: 20px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 export { Container, Menus };

@@ -3,7 +3,7 @@ import React from "react";
 import * as Styled from "./styles";
 
 interface SidebarProps {
-  children: JSX.Element;
+  children: React.ReactNode;
   primaryColor: string;
 }
 

@@ -34,7 +34,7 @@ const Survey: React.FC<SurveyProps> = ({
         throw new Error("Survey platform not supported");
     }
 
-  }, [email, loading]);
+  }, [email, loading, additionalInfo, surveyId, surveyPlatform]);
 
   return <></>;
 };

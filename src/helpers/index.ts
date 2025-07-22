@@ -1,3 +1,8 @@
-const emptyFunction = () => { /* empty */ };
+import iconTypes, { iconOptions } from "./icons";
 
-export { emptyFunction };
+/**
+ * Função vazia para uso como placeholder em callbacks
+ */
+export const emptyFunction = () => {};
+
+export { iconTypes, iconOptions };

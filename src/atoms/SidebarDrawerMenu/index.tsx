@@ -1,13 +1,10 @@
 import React, { useCallback } from "react";
-
 import { ReactSVG } from "react-svg";
-
-import { sidebarDrawerAtom } from "../../states/SidebarDrawerContext";
-
+import iconTypes from "@/helpers/icons";
 import { useAtom } from "../../libraries/jotai";
 import { Skeleton } from "../../libraries/mui/components";
-
 import * as Styled from "./styles";
+import { sidebarDrawerAtom } from "../../states/SidebarDrawerContext";
 
 export interface SidebarDrawerMenuProps {
   id: string;
@@ -30,7 +27,7 @@ const SidebarDrawerMenu: React.FC<SidebarDrawerMenuProps> = ({
 
     sidebarDrawer.onClose();
 
-  }, [onClick, sidebarDrawer.onClose]);
+  }, [onClick, sidebarDrawer]);
 
   return (
     <Styled.Container
@@ -41,14 +38,43 @@ const SidebarDrawerMenu: React.FC<SidebarDrawerMenuProps> = ({
       type={type}
     >
       <ReactSVG
-        src={icon}
+        src={iconTypes[icon as keyof typeof iconTypes] as string}
         alt="menu Icon"
         loading={() => <Skeleton variant="rectangular" animation="wave" width={20} height={20} />}
+        beforeInjection={(svg) => {
+
+          if (identifierColor && type === "primary") {
+            svg.setAttribute("fill", identifierColor);
+            svg.setAttribute("color", identifierColor);
+
+            const paths = svg.querySelectorAll("path");
+
+            paths.forEach((path) => {
+              path.setAttribute("fill", identifierColor);
+            });
+
+            const circles = svg.querySelectorAll("circle");
+
+            circles.forEach((circle) => {
+              circle.setAttribute("fill", identifierColor);
+            });
+
+            const rects = svg.querySelectorAll("rect");
+
+            rects.forEach((rect) => {
+              rect.setAttribute("fill", identifierColor);
+            });
+          }
+        }}
       />
       <Styled.Title>{title}</Styled.Title>
       { type === "primary" ? <Styled.Identifier identifierColor={identifierColor} /> : null }
     </Styled.Container>
   );
+};
+
+SidebarDrawerMenu.defaultProps = {
+  onClick: undefined
 };
 
 export default SidebarDrawerMenu;

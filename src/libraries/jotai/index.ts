@@ -1,3 +1,3 @@
-import { atom, useAtom } from "jotai";
+import { atom, useAtom, Provider } from "jotai";
 
-export { atom, useAtom };
+export { atom, useAtom, Provider };

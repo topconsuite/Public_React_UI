@@ -34,7 +34,7 @@ const TextField: React.FC<TextFieldProps> = ({
         name: fieldName,
         ref: inputRef.current,
         path: "value",
-        clearValue(_ref, resetValue: string) {
+        clearValue(_ref: HTMLInputElement, resetValue: string) {
 
           const ref = _ref;
 

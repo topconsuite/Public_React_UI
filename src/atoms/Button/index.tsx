@@ -3,7 +3,7 @@ import React from "react";
 import { LoadingButtonProps } from "../../libraries/mui/components";
 import * as Styled from "./styles";
 
-interface ButtonProps extends LoadingButtonProps {
+export interface ButtonProps extends LoadingButtonProps {
   text: string;
   size?: "small" | "large";
 }
@@ -21,3 +21,4 @@ Button.defaultProps = {
 };
 
 export default Button;
+export type { ButtonProps as TelluriaButtonProps };

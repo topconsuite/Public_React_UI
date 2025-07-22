@@ -13,6 +13,7 @@ export const SpeedDialMenuContainer = styled.div<FloatActionButtonMenuContainerP
   background-color: white;
   border-radius: 10px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  font-family: 'Roboto', sans-serif;
   
   :active {
       background-color: ${(props) => props.colorOnHover};

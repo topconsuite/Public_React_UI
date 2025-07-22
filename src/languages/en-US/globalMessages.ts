@@ -1,0 +1,32 @@
+import { GlobalMessages, TranslationGlobalMessages } from "../interfaces/globalMessages";
+
+export const messages: TranslationGlobalMessages = {
+  [GlobalMessages.save]: "Save",
+  [GlobalMessages.register]: "Register",
+  [GlobalMessages.close]: "Close",
+  [GlobalMessages.cancel]: "Cancel",
+  [GlobalMessages.edit]: "Edit",
+  [GlobalMessages.delete]: "Delete",
+  [GlobalMessages.confirm]: "Confirm",
+  [GlobalMessages.yes]: "Yes",
+  [GlobalMessages.no]: "No",
+  [GlobalMessages.ok]: "OK",
+  [GlobalMessages.loading]: "Loading",
+  [GlobalMessages.search]: "Search",
+  [GlobalMessages.filter]: "Filter",
+  [GlobalMessages.clear]: "Clear",
+  [GlobalMessages.required]: "Required",
+  [GlobalMessages.optional]: "Optional",
+  [GlobalMessages.success]: "Success",
+  [GlobalMessages.error]: "Error",
+  [GlobalMessages.warning]: "Warning",
+  [GlobalMessages.info]: "Info",
+  [GlobalMessages.name]: "Name",
+  [GlobalMessages.description]: "Description",
+  [GlobalMessages.status]: "Status",
+  [GlobalMessages.active]: "Active",
+  [GlobalMessages.inactive]: "Inactive",
+  [GlobalMessages.created]: "Created",
+  [GlobalMessages.updated]: "Updated",
+  [GlobalMessages.deleted]: "Deleted"
+};
